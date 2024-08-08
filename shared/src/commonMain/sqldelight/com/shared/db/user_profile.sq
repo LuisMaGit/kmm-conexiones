@@ -1,0 +1,17 @@
+selectLives:
+SELECT lives
+FROM UserProfile
+LIMIT 1;
+
+updateLives:
+UPDATE UserProfile
+SET lives = :lives;
+
+selectAppOpened:
+SELECT app_oppened
+FROM UserProfile
+LIMIT 1;
+
+updateAppOpened:
+UPDATE UserProfile
+SET app_oppened = :opened;

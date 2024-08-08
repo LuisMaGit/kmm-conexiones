@@ -1,0 +1,6 @@
+framework module LuismaLib {
+  umbrella header "LuismaLib-umbrella.h"
+
+  export *
+  module * { export * }
+}

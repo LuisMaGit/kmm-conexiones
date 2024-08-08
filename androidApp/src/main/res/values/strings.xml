@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    reusable-->
+    <string name="reusable_bullet">•</string>
+    <string name="reusable_equal">=</string>
+    <!--    levels-->
+    <string name="levels_card_win">Ganaste</string>
+    <string name="levels_card_lost">Perdiste</string>
+    <string name="levels_card_playing">Jugando</string>
+    <string name="levels_previous_levels_btn">Mostrar niveles previos</string>
+    <string name="levels_floating_button">"Ir a tu última partida"</string>
+    <!--    stats-->
+    <string name="stats_title">Estadísticas</string>
+    <string name="stats_empty">Comienza a jugar para tener estadísticas</string>
+    <string name="stats_lost">Perdidos</string>
+    <string name="stats_win">Ganados</string>
+    <string name="stats_played">Jugados de %1$s</string>
+    <string name="stats_graph_title">Distribución de intentos en juegos ganados</string>
+    <!--    know how-->
+    <string name="kh_title">¿Cómo jugar?</string>
+    <string name="kh_subtitle">Busca grupos de cuatro palabras que tengan algo en común.</string>
+    <string name="kh_bullet_1">Selecciona cuatro palabras y pulsa</string>
+    <string name="kh_bullet_1_substring_1">\"Enviar\"</string>
+    <string name="kh_bullet_1_substring_2">"para comprobar si has acertado."</string>
+    <string name="kh_bullet_2">Encuentra los grupos sin cometer 4 errores.</string>
+    <string name="kh_bullet_3">Para pasar de nivel necesitas al menos una vida</string>
+    <string name="kh_bullet_4">Obtén vidas ganado partidas, si ganas con:</string>
+    <string name="kh_error">error</string>
+    <string name="kh_errors">errores</string>
+    <string name="kh_ex_title">Ejemplos de grupo:</string>
+    <string name="kh_ex_bullet_1">AVES COMUNES:</string>
+    <string name="kh_ex_words_1">Mirlo, Paloma, Jilguero, Gorrión</string>
+    <string name="kh_ex_bullet_2">PASO DE ______:</string>
+    <string name="kh_ex_words_2">Cebra, Peatones, Montaña, Baile</string>
+    <string name="kh_ex_text_1">Los grupos siempre serán más específicas que</string>
+    <string name="kh_ex_text_1_substring_1">"PALABRAS DE 5 LETRAS"</string>
+    <string name="kh_ex_text_1_substring_2">"NOMBRES"</string>
+    <string name="kh_ex_text_1_substring_3">"VERBOS"</string>
+    <string name="kh_ex_text_2">A cada grupo se le asigna un color, que se irá revelando a medida que resuelvas:</string>
+    <string name="kh_ex_graph_simple">Simple</string>
+    <string name="kh_ex_graph_hard">Difícil</string>
+    <!--    lives-->
+    <string name="lives_no_lives_title">Te has quedado sin vidas</string>
+    <string name="lives_no_lives_subtitle">Mira un video por unos segundos y obtén una vida para continuar jugando.</string>
+    <string name="lives_lives_title">Tus vidas</string>
+    <string name="lives_lives_subtitle">Mira un video por unos segundos y obtén una vida.</string>
+    <!--    game-->
+    <string name="level_title">Nivel %1$d</string>
+    <string name="level_errors">Errores restantes</string>
+    <string name="level_btn_uncheck">Desmarcar todo</string>
+    <string name="level_btn_rotate">Rotar</string>
+    <string name="level_btn_send">Enviar</string>
+    <string name="level_submit_tries_alert">Te faltan %1$d palabras por seleccionar</string>
+    <string name="level_win">GANASTE 🎉</string>
+    <string name="level_next_level">Nivel %1$d</string>
+    <string name="level_lost">PERDISTE</string>
+    <string name="level_lost_no_lives">Te has quedado sin vidas, mira un video por unos segundos y obtén una vida para continuar.</string>
+</resources>

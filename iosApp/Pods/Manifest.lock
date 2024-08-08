@@ -1,0 +1,22 @@
+PODS:
+  - LuismaLib (0.1.0)
+  - shared (1.0):
+    - LuismaLib
+
+DEPENDENCIES:
+  - LuismaLib (from `../LuismaLib`)
+  - shared (from `../shared`)
+
+EXTERNAL SOURCES:
+  LuismaLib:
+    :path: "../LuismaLib"
+  shared:
+    :path: "../shared"
+
+SPEC CHECKSUMS:
+  LuismaLib: 1ad6ce7715745a6fa1bb35fcae18a68b98353e5f
+  shared: ad3ee458df54463eb87f31dfd08cf91dc3a78d8e
+
+PODFILE CHECKSUM: 60945a55fcbbf77894eaaeb076251a74e1b0d8b7
+
+COCOAPODS: 1.15.2

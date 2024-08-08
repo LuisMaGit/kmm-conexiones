@@ -1,0 +1,28 @@
+{
+  "name": "LuismaLib",
+  "version": "0.1.0",
+  "summary": "A short description of LuismaLib.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/luismalodgify/LuismaLib",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "luismalodgify": "luis.garcia@lodgify.com"
+  },
+  "source": {
+    "git": "https://github.com/luismalodgify/LuismaLib.git",
+    "tag": "0.1.0"
+  },
+  "source_files": "LuismaLib/Classes/**/*",
+  "swift_versions": "4.0",
+  "platforms": {
+    "osx": null,
+    "ios": null,
+    "tvos": null,
+    "visionos": null,
+    "watchos": null
+  },
+  "swift_version": "4.0"
+}

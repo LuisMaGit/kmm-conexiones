@@ -1,0 +1,35 @@
+selectLevelsPaginated:
+SELECT game_id, state, guessed_tries
+FROM Game
+LIMIT :limit
+OFFSET :offset;
+
+selectTotalGames:
+SELECT COUNT()
+FROM Game;
+
+selectCurrentlyPlayingGameRowId:
+SELECT game_id
+FROM Game
+WHERE state = 'PLAYING' OR state = 'FREE'
+LIMIT 1;
+
+selectWinedGamesCount:
+SELECT COUNT()
+FROM Game
+WHERE state = 'WIN';
+
+selectLostGamesCount:
+SELECT COUNT()
+FROM Game
+WHERE state = 'LOST';
+
+selectTotalPlayedCount:
+SELECT COUNT()
+FROM Game
+WHERE state = 'LOST' OR state = 'WIN';
+
+selectGuessedTriesCount:
+SELECT COUNT()
+FROM Game
+WHERE state = 'WIN' AND guessed_tries = :guessed_tries;

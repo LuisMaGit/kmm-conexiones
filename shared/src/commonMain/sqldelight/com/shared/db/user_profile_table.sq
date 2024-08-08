@@ -1,0 +1,6 @@
+CREATE TABLE UserProfile (
+    lives INTEGER,
+    app_oppened INTEGER
+);
+
+INSERT INTO UserProfile (lives, app_oppened) VALUES (3, 0);
