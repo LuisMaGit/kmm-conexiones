@@ -30,6 +30,14 @@ public struct CThemeColors {
             colorScheme: colorScheme
         )
     }
+    
+    public var softContrastScreenBackground: Color {
+        return CColorsHelper().getColorByTheme(
+            lightOrAny: CColors.white,
+            dark: CColors.black,
+            colorScheme: colorScheme
+        )
+    }
 
     public var iconDefault: Color {
         return CColorsHelper().getColorByTheme(

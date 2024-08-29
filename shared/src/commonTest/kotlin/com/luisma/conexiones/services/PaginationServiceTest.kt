@@ -39,11 +39,13 @@ class PaginationServiceTest {
     fun `getPreviousPage - test some cases`() {
         assertEquals(setOf(4, 5, 6, 7, 8, 9), getService().getPreviousPage(setOf(5, 6, 7, 8, 9)))
         assertEquals(setOf(1, 5, 6, 7, 8, 9), getService().getPreviousPage(setOf(1, 5, 6, 7, 8, 9)))
+        assertEquals(setOf(4, 5, 6), getService().getPreviousPage(setOf(6, 5)))
     }
 
     @Test
     fun `getNextPage - test some cases`() {
         assertEquals(setOf(5, 6, 7, 8, 9, 10), getService().getNextPage(setOf(5, 6, 7, 8, 9)))
+        assertEquals(setOf(5, 6, 7), getService().getNextPage(setOf(6, 5)))
     }
 
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,10 +12,26 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		5FFE9C688359D4CAE5A54C3B /* Pods_iosApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41F640FE8EE6B1A87DA0C193 /* Pods_iosApp.framework */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		D62456822C733A130036D676 /* Levels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62456812C733A130036D676 /* Levels.swift */; };
+		D62456842C733AF20036D676 /* LevelCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D62456832C733AF20036D676 /* LevelCard.swift */; };
+		D640DBF72C75349A008A41AF /* CButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D640DBF62C75349A008A41AF /* CButton.swift */; };
+		D64548BD2C73C1FC003A93F7 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = D64548BC2C73C1FC003A93F7 /* Localizable.xcstrings */; };
+		D64711362C784D560012BC9C /* CLogo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64711352C784D560012BC9C /* CLogo.swift */; };
+		D64711382C784DBB0012BC9C /* CLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64711372C784DBB0012BC9C /* CLoader.swift */; };
+		D64C34DB2C7341740093603A /* RippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64C34DA2C7341740093603A /* RippleButton.swift */; };
 		D64F969B2C049A070033BA2F /* CIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64F969A2C049A070033BA2F /* CIcon.swift */; };
+		D65667CC2C7DAF3400BD2F1C /* AppbarLives.swift in Sources */ = {isa = PBXBuildFile; fileRef = D65667CB2C7DAF3400BD2F1C /* AppbarLives.swift */; };
+		D659A72B2C779DB5000B6818 /* LevelFloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D659A72A2C779DB5000B6818 /* LevelFloatingButton.swift */; };
+		D659A72D2C77A02F000B6818 /* LevelsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D659A72C2C77A02F000B6818 /* LevelsState.swift */; };
+		D659A72F2C77A1AA000B6818 /* LevelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D659A72E2C77A1A9000B6818 /* LevelsViewModel.swift */; };
 		D665E3992C00C38B0027F4D8 /* CeraRoundProBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D665E3962C00C38B0027F4D8 /* CeraRoundProBold.otf */; };
 		D665E39A2C00C38B0027F4D8 /* CeraRoundProMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D665E3972C00C38B0027F4D8 /* CeraRoundProMedium.otf */; };
 		D665E39B2C00C38B0027F4D8 /* CeraRoundProRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D665E3982C00C38B0027F4D8 /* CeraRoundProRegular.otf */; };
+		D668582D2C7A196F00A27F27 /* LevelsGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = D668582C2C7A196F00A27F27 /* LevelsGrid.swift */; };
+		D6CD362B2C803B7200181C4E /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD362A2C803B7200181C4E /* Stats.swift */; };
+		D6CD362D2C803B8300181C4E /* StatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD362C2C803B8300181C4E /* StatsViewModel.swift */; };
+		D6D2BFC12C7D1E0B00E42033 /* Appbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D2BFC02C7D1E0B00E42033 /* Appbar.swift */; };
+		D6D2BFC32C7D1E3A00E42033 /* AppbarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D2BFC22C7D1E3A00E42033 /* AppbarViewModel.swift */; };
 		D6FB452D2C00A26A00688CBD /* LuimaLibBattery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB452C2C00A26A00688CBD /* LuimaLibBattery.swift */; };
 		D6FB452F2C00A38000688CBD /* CColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB452E2C00A38000688CBD /* CColors.swift */; };
 		D6FB45312C00A56A00688CBD /* CThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB45302C00A56A00688CBD /* CThemeColors.swift */; };
@@ -34,10 +50,26 @@
 		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7DD3C5904F5B1DFB19BC252 /* Pods-iosApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iosApp.release.xcconfig"; path = "Target Support Files/Pods-iosApp/Pods-iosApp.release.xcconfig"; sourceTree = "<group>"; };
+		D62456812C733A130036D676 /* Levels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Levels.swift; sourceTree = "<group>"; };
+		D62456832C733AF20036D676 /* LevelCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelCard.swift; sourceTree = "<group>"; };
+		D640DBF62C75349A008A41AF /* CButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CButton.swift; sourceTree = "<group>"; };
+		D64548BC2C73C1FC003A93F7 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		D64711352C784D560012BC9C /* CLogo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLogo.swift; sourceTree = "<group>"; };
+		D64711372C784DBB0012BC9C /* CLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLoader.swift; sourceTree = "<group>"; };
+		D64C34DA2C7341740093603A /* RippleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RippleButton.swift; sourceTree = "<group>"; };
 		D64F969A2C049A070033BA2F /* CIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CIcon.swift; sourceTree = "<group>"; };
+		D65667CB2C7DAF3400BD2F1C /* AppbarLives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppbarLives.swift; sourceTree = "<group>"; };
+		D659A72A2C779DB5000B6818 /* LevelFloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelFloatingButton.swift; sourceTree = "<group>"; };
+		D659A72C2C77A02F000B6818 /* LevelsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsState.swift; sourceTree = "<group>"; };
+		D659A72E2C77A1A9000B6818 /* LevelsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsViewModel.swift; sourceTree = "<group>"; };
 		D665E3962C00C38B0027F4D8 /* CeraRoundProBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CeraRoundProBold.otf; sourceTree = "<group>"; };
 		D665E3972C00C38B0027F4D8 /* CeraRoundProMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CeraRoundProMedium.otf; sourceTree = "<group>"; };
 		D665E3982C00C38B0027F4D8 /* CeraRoundProRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CeraRoundProRegular.otf; sourceTree = "<group>"; };
+		D668582C2C7A196F00A27F27 /* LevelsGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelsGrid.swift; sourceTree = "<group>"; };
+		D6CD362A2C803B7200181C4E /* Stats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stats.swift; sourceTree = "<group>"; };
+		D6CD362C2C803B8300181C4E /* StatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsViewModel.swift; sourceTree = "<group>"; };
+		D6D2BFC02C7D1E0B00E42033 /* Appbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appbar.swift; sourceTree = "<group>"; };
+		D6D2BFC22C7D1E3A00E42033 /* AppbarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppbarViewModel.swift; sourceTree = "<group>"; };
 		D6FB452C2C00A26A00688CBD /* LuimaLibBattery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuimaLibBattery.swift; sourceTree = "<group>"; };
 		D6FB452E2C00A38000688CBD /* CColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CColors.swift; sourceTree = "<group>"; };
 		D6FB45302C00A56A00688CBD /* CThemeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CThemeColors.swift; sourceTree = "<group>"; };
@@ -104,6 +136,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				D624567D2C7339640036D676 /* Features */,
 				D6FB452B2C009AAD00688CBD /* CoreUI */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				7555FF82242A565900829871 /* ContentView.swift */,
@@ -111,8 +144,65 @@
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
+				D64548BC2C73C1FC003A93F7 /* Localizable.xcstrings */,
 			);
 			path = iosApp;
+			sourceTree = "<group>";
+		};
+		D624567D2C7339640036D676 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				D6CD36292C803B6200181C4E /* Stats */,
+				D6D2BFBF2C7D1DDE00E42033 /* Appbar */,
+				D624567E2C7339A90036D676 /* Levels */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		D624567E2C7339A90036D676 /* Levels */ = {
+			isa = PBXGroup;
+			children = (
+				D668582B2C7A195F00A27F27 /* Components */,
+				D62456812C733A130036D676 /* Levels.swift */,
+				D659A72C2C77A02F000B6818 /* LevelsState.swift */,
+				D659A72E2C77A1A9000B6818 /* LevelsViewModel.swift */,
+			);
+			path = Levels;
+			sourceTree = "<group>";
+		};
+		D65667CA2C7DAF0500BD2F1C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D65667CB2C7DAF3400BD2F1C /* AppbarLives.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D668582B2C7A195F00A27F27 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				D668582C2C7A196F00A27F27 /* LevelsGrid.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		D6CD36292C803B6200181C4E /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				D6CD362A2C803B7200181C4E /* Stats.swift */,
+				D6CD362C2C803B8300181C4E /* StatsViewModel.swift */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
+		D6D2BFBF2C7D1DDE00E42033 /* Appbar */ = {
+			isa = PBXGroup;
+			children = (
+				D65667CA2C7DAF0500BD2F1C /* Components */,
+				D6D2BFC02C7D1E0B00E42033 /* Appbar.swift */,
+				D6D2BFC22C7D1E3A00E42033 /* AppbarViewModel.swift */,
+			);
+			path = Appbar;
 			sourceTree = "<group>";
 		};
 		D6FB452B2C009AAD00688CBD /* CoreUI */ = {
@@ -130,6 +220,7 @@
 				D6FB452E2C00A38000688CBD /* CColors.swift */,
 				D6FB45302C00A56A00688CBD /* CThemeColors.swift */,
 				D6FB45332C00A5CB00688CBD /* CColorsHelper.swift */,
+				D64C34DA2C7341740093603A /* RippleButton.swift */,
 			);
 			path = CColors;
 			sourceTree = "<group>";
@@ -159,6 +250,11 @@
 			children = (
 				D6FB45472C00AC4800688CBD /* CText.swift */,
 				D64F969A2C049A070033BA2F /* CIcon.swift */,
+				D62456832C733AF20036D676 /* LevelCard.swift */,
+				D640DBF62C75349A008A41AF /* CButton.swift */,
+				D659A72A2C779DB5000B6818 /* LevelFloatingButton.swift */,
+				D64711352C784D560012BC9C /* CLogo.swift */,
+				D64711372C784DBB0012BC9C /* CLoader.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -202,11 +298,12 @@
 			};
 			buildConfigurationList = 7555FF76242A565900829871 /* Build configuration list for PBXProject "iosApp" */;
 			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = en;
+			developmentRegion = es;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 7555FF72242A565900829871;
 			productRefGroup = 7555FF7C242A565900829871 /* Products */;
@@ -225,6 +322,7 @@
 			files = (
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
+				D64548BD2C73C1FC003A93F7 /* Localizable.xcstrings in Resources */,
 				D665E39A2C00C38B0027F4D8 /* CeraRoundProMedium.otf in Resources */,
 				D665E39B2C00C38B0027F4D8 /* CeraRoundProRegular.otf in Resources */,
 				D665E3992C00C38B0027F4D8 /* CeraRoundProBold.otf in Resources */,
@@ -280,14 +378,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D62456822C733A130036D676 /* Levels.swift in Sources */,
+				D64711362C784D560012BC9C /* CLogo.swift in Sources */,
+				D6D2BFC32C7D1E3A00E42033 /* AppbarViewModel.swift in Sources */,
 				D6FB454A2C00AC6200688CBD /* CFont.swift in Sources */,
+				D659A72D2C77A02F000B6818 /* LevelsState.swift in Sources */,
 				D64F969B2C049A070033BA2F /* CIcon.swift in Sources */,
+				D65667CC2C7DAF3400BD2F1C /* AppbarLives.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				D6FB45482C00AC4800688CBD /* CText.swift in Sources */,
 				D6FB452F2C00A38000688CBD /* CColors.swift in Sources */,
+				D6CD362D2C803B8300181C4E /* StatsViewModel.swift in Sources */,
+				D659A72F2C77A1AA000B6818 /* LevelsViewModel.swift in Sources */,
+				D62456842C733AF20036D676 /* LevelCard.swift in Sources */,
 				D6FB452D2C00A26A00688CBD /* LuimaLibBattery.swift in Sources */,
+				D6CD362B2C803B7200181C4E /* Stats.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				D640DBF72C75349A008A41AF /* CButton.swift in Sources */,
+				D64C34DB2C7341740093603A /* RippleButton.swift in Sources */,
+				D668582D2C7A196F00A27F27 /* LevelsGrid.swift in Sources */,
+				D64711382C784DBB0012BC9C /* CLoader.swift in Sources */,
 				D6FB45312C00A56A00688CBD /* CThemeColors.swift in Sources */,
+				D6D2BFC12C7D1E0B00E42033 /* Appbar.swift in Sources */,
+				D659A72B2C779DB5000B6818 /* LevelFloatingButton.swift in Sources */,
 				D6FB45342C00A5CB00688CBD /* CColorsHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

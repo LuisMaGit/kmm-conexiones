@@ -11,6 +11,7 @@ import SwiftUI
 public enum CSVGType: String {
     case arrowLeft = "svg_arrow_left"
     case arrowRight = "svg_arrow_right"
+    case arrowUp = "svg_arrow_up"
     case broom = "svg_broom"
     case chart = "svg_chart"
     case heartFilled = "svg_heart_filled"

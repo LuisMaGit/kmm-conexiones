@@ -16,10 +16,7 @@ interface IGameDBService {
 }
 
 class GameDBService : IGameDBService {
-
-    private val db = ConexionesDatabase(conSqlDriver())
-    private val queries = db.gameQueries
-
+    private val queries = DBInstance.db.gameQueries
     private fun levelsMapper(level: SelectLevelsPaginated): GameDBModel {
         return GameDBModel(
             id = level.game_id.toInt(),

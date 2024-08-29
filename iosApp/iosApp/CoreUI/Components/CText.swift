@@ -15,6 +15,7 @@ public struct CText: View {
     let font: CFont?
     let fontSize: CGFloat?
     let lineLimit: Int?
+    let fixedFont: Bool
 
     init(
         key: LocalizedStringKey? = nil,
@@ -22,7 +23,8 @@ public struct CText: View {
         color: Color? = nil,
         font: CFont? = nil,
         fontSize: CGFloat? = nil,
-        lineLimit: Int? = nil
+        lineLimit: Int? = nil,
+        fixedFont: Bool = false
     ) {
         self.key = key
         self.text = text
@@ -30,6 +32,7 @@ public struct CText: View {
         self.font = font
         self.fontSize = fontSize
         self.lineLimit = lineLimit
+        self.fixedFont = fixedFont
     }
 
     @Environment(\.colorScheme) var colorScheme
@@ -66,10 +69,15 @@ public struct CText: View {
         getText
             .foregroundColor(getColor)
             .font(
-                Font.custom(
-                    getFont.rawValue,
-                    size: fontSize ?? cFontDefaultSize
-                )
+                fixedFont
+                    ? Font.custom(
+                        getFont.rawValue,
+                        fixedSize: fontSize ?? cFontDefaultSize
+                    )
+                    : Font.custom(
+                        getFont.rawValue,
+                        size: fontSize ?? cFontDefaultSize
+                    )
             )
             .lineLimit(lineLimit)
     }
@@ -79,7 +87,7 @@ struct CText_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             CText(text: "Hello")
-            CText(text: "Hello", font: .ceraMedium)
+            CText(text: "Hello", font: .ceraMedium, fixedFont: true)
             CText(text: "Hello", font: .ceraRegular)
         }
     }

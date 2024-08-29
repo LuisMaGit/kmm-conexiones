@@ -54,9 +54,9 @@ class PaginationService(
             return fetchedPages
         }
 
-
-        val output = fetchedPages.map { it }.toMutableList()
-        output.add(fetchedPages.first() - 1)
+        val sorted = fetchedPages.sorted()
+        val output = sorted.map { it }.toMutableList()
+        output.add(sorted.first() - 1)
         return output.sorted().toSet()
     }
 
@@ -65,9 +65,9 @@ class PaginationService(
             return fetchedPages
         }
 
-
-        val output = fetchedPages.map { it }.toMutableList()
-        output.add(fetchedPages.last() + 1)
+        val sorted = fetchedPages.sorted()
+        val output = sorted.map { it }.toMutableList()
+        output.add(sorted.last() + 1)
         return output.sorted().toSet()
     }
 

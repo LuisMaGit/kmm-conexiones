@@ -1,0 +1,538 @@
+{
+  "sourceLanguage" : "es",
+  "strings" : {
+    "Battery level ios: %@" : {
+
+    },
+    "kh_bullet_1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona cuatro palabras y pulsa"
+          }
+        }
+      }
+    },
+    "kh_bullet_1_substring_1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Enviar\""
+          }
+        }
+      }
+    },
+    "kh_bullet_1_substring_2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"para comprobar si has acertado.\""
+          }
+        }
+      }
+    },
+    "kh_bullet_2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Encuentra los grupos sin cometer 4 errores."
+          }
+        }
+      }
+    },
+    "kh_bullet_3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para pasar de nivel necesitas al menos una vida"
+          }
+        }
+      }
+    },
+    "kh_bullet_4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obtén vidas ganado partidas, si ganas con:"
+          }
+        }
+      }
+    },
+    "kh_error" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "error"
+          }
+        }
+      }
+    },
+    "kh_errors" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "errores"
+          }
+        }
+      }
+    },
+    "kh_ex_bullet_1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AVES COMUNES:"
+          }
+        }
+      }
+    },
+    "kh_ex_bullet_2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PASO DE ______:"
+          }
+        }
+      }
+    },
+    "kh_ex_graph_hard" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Difícil"
+          }
+        }
+      }
+    },
+    "kh_ex_graph_simple" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simple"
+          }
+        }
+      }
+    },
+    "kh_ex_text_1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Los grupos siempre serán más específicas que"
+          }
+        }
+      }
+    },
+    "kh_ex_text_1_substring_1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"PALABRAS DE 5 LETRAS\""
+          }
+        }
+      }
+    },
+    "kh_ex_text_1_substring_2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"NOMBRES\""
+          }
+        }
+      }
+    },
+    "kh_ex_text_1_substring_3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"VERBOS\""
+          }
+        }
+      }
+    },
+    "kh_ex_text_2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A cada grupo se le asigna un color, que se irá revelando a medida que resuelvas:"
+          }
+        }
+      }
+    },
+    "kh_ex_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ejemplos de grupo"
+          }
+        }
+      }
+    },
+    "kh_ex_words_1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mirlo, Paloma, Jilguero, Gorrión"
+          }
+        }
+      }
+    },
+    "kh_ex_words_2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cebra, Peatones, Montaña, Baile"
+          }
+        }
+      }
+    },
+    "kh_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Busca grupos de cuatro palabras que tengan algo en común."
+          }
+        }
+      }
+    },
+    "kh_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Cómo jugar?"
+          }
+        }
+      }
+    },
+    "level_btn_rotate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rotar"
+          }
+        }
+      }
+    },
+    "level_btn_send" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar"
+          }
+        }
+      }
+    },
+    "level_btn_uncheck" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Desmarcar todo"
+          }
+        }
+      }
+    },
+    "level_errors" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Errores restantes"
+          }
+        }
+      }
+    },
+    "level_lost" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PERDISTE"
+          }
+        }
+      }
+    },
+    "level_lost_no_lives" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Te has quedado sin vidas, mira un video por unos segundos y obtén una vida para continuar."
+          }
+        }
+      }
+    },
+    "level_next_level" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nivel %1$d"
+          }
+        }
+      }
+    },
+    "level_submit_tries_alert" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Te faltan %1$d palabras por seleccionar"
+          }
+        }
+      }
+    },
+    "level_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nivel %1$d"
+          }
+        }
+      }
+    },
+    "level_win" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "GANASTE 🎉"
+          }
+        }
+      }
+    },
+    "levels_card_lost" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perdiste"
+          }
+        }
+      }
+    },
+    "levels_card_playing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jugando"
+          }
+        }
+      }
+    },
+    "levels_card_win" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Ganaste"
+          }
+        }
+      }
+    },
+    "levels_floating_button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ir a tu última partida"
+          }
+        }
+      }
+    },
+    "levels_previous_levels_btn" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mostrar niveles previos"
+          }
+        }
+      }
+    },
+    "lives_lives_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mira un video por unos segundos y obtén una vida."
+          }
+        }
+      }
+    },
+    "lives_lives_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tus vidas"
+          }
+        }
+      }
+    },
+    "lives_no_lives_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mira un video por unos segundos y obtén una vida para continuar jugando."
+          }
+        }
+      }
+    },
+    "lives_no_lives_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Te has quedado sin vidas"
+          }
+        }
+      }
+    },
+    "stats_empty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Comienza a jugar para tener estadísticas"
+          }
+        }
+      }
+    },
+    "stats_graph_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distribución de intentos en juegos ganados"
+          }
+        }
+      }
+    },
+    "stats_lost" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perdidos"
+          }
+        }
+      }
+    },
+    "stats_played" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jugados de %1$s"
+          }
+        }
+      }
+    },
+    "stats_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estadísticas"
+          }
+        }
+      }
+    },
+    "stats_win" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ganados"
+          }
+        }
+      }
+    },
+    "transparent: false" : {
+
+    },
+    "transparent: false\nfixedFeedback: true" : {
+
+    },
+    "transparent: true" : {
+
+    },
+    "transparent: true\nfixedFeedback: true" : {
+
+    }
+  },
+  "version" : "1.0"
+}

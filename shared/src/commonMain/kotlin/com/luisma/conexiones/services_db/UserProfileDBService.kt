@@ -12,8 +12,8 @@ interface IUserProfileDBService {
 }
 
 class UserProfileDBService : IUserProfileDBService {
-    private val db = ConexionesDatabase(conSqlDriver())
-    private val queries = db.user_profileQueries
+
+    private val queries = DBInstance.db.user_profileQueries
 
     override suspend fun selectLives(): Int {
         return queries.selectLives().executeAsOne().lives?.toInt() ?: 0

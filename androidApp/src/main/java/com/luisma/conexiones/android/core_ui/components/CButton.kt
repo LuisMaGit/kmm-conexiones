@@ -82,7 +82,7 @@ fun CButton(
 
 object CButtonContracts {
     val TEXT_FONT_SIZE = 14.sp
-    val ICON_SIZE = 17.dp
+    val ICON_SIZE = 10.dp
     val ICON_TEXT_SPACE = 8.dp
     val BORDER_PADDING = 0.75.dp
     val BOX_INTERNAL_H = 48.dp
