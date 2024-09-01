@@ -1,6 +1,5 @@
 package com.luisma.conexiones.android.core_ui.components
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -16,9 +15,14 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.luisma.conexiones.android.R
 import com.luisma.conexiones.android.core_ui.theme.CTheme
+import com.luisma.conexiones.android.core_ui.theme.cBorderRadius8
+import com.luisma.conexiones.android.core_ui.theme.cFontSize36sp
+import com.luisma.conexiones.android.core_ui.theme.cSpace18
+import com.luisma.conexiones.android.core_ui.theme.cSpace24
+import com.luisma.conexiones.android.core_ui.theme.cSpace40
+import com.luisma.conexiones.android.core_ui.theme.cSpace60
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -54,32 +58,32 @@ fun CBottomSheet(
             dragHandle = { Box {} },
             containerColor = CTheme.colors.screenBackground,
             shape = RoundedCornerShape(
-                topStart = CBottomSheetContracts.BORDER_R,
-                topEnd = CBottomSheetContracts.BORDER_R
+                topStart = cBorderRadius8,
+                topEnd = cBorderRadius8
             )
         ) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(
-                        top = CBottomSheetContracts.PADDING_HEADER_TOP,
-                        bottom = CBottomSheetContracts.PADDING_HEADER_BOTTOM,
-                        start = CBottomSheetContracts.PADDING_H_CONTENT,
-                        end = CBottomSheetContracts.PADDING_H_CONTENT,
+                        top = cSpace40,
+                        bottom = cSpace24,
+                        start = cSpace18,
+                        end = cSpace18,
                     )
             ) {
-                Row (
+                Row(
                     verticalAlignment = Alignment.CenterVertically
-                ){
+                ) {
                     CText(
                         modifier = Modifier.weight(.9f),
                         text = title,
-                        fontSize = CBottomSheetContracts.TITLE_FONT_SIZE
+                        fontSize = cFontSize36sp
                     )
                     CIconButton(
                         modifier = Modifier.weight(.1f),
                         id = R.drawable.ic_close,
-                        iconSize = CBottomSheetContracts.CLOSE_ICON_SIZE,
+                        iconSize = 16.dp,
                         onTap = {
                             coroutineScope.launch {
                                 sheetState.hide()
@@ -92,21 +96,15 @@ fun CBottomSheet(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = CBottomSheetContracts.PADDING_H_CONTENT)
+                    .padding(horizontal = cSpace18)
             ) {
                 content()
             }
-            Spacer(modifier = Modifier.padding(bottom = CBottomSheetContracts.PADDING_BOTTOM))
+            Spacer(
+                modifier = Modifier.padding(
+                    bottom = cSpace60
+                )
+            )
         }
     }
-}
-
-object CBottomSheetContracts {
-    val BORDER_R = 8.dp
-    val CLOSE_ICON_SIZE = 16.dp
-    val PADDING_HEADER_TOP = 40.dp
-    val PADDING_HEADER_BOTTOM = 24.dp
-    val PADDING_H_CONTENT = 18.dp
-    val PADDING_BOTTOM = 60.dp
-    val TITLE_FONT_SIZE = 36.sp
 }

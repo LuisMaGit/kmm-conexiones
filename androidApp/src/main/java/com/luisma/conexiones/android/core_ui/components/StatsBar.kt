@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.luisma.conexiones.android.core_ui.theme.cBorderRadius4
 
 @Composable
 fun StatsBar(
@@ -17,13 +18,9 @@ fun StatsBar(
 ) {
     Box(
         modifier = modifier
-            .clip(shape = RoundedCornerShape(StatsBarContracts.BORDER_R))
-            .height(StatsBarContracts.HEIGHT)
+            .clip(shape = RoundedCornerShape(cBorderRadius4))
+            .height(20.dp)
             .background(color = color)
     )
 }
 
-object StatsBarContracts {
-    val HEIGHT = 20.dp
-    val BORDER_R = 4.dp
-}

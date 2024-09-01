@@ -20,6 +20,9 @@ class StatsService(
     }
 
     suspend fun calculateStats(): StatsData {
+        return StatsData.initial().copy(
+            distributionBars = List(4, { StatsBarModel.initial() })
+        )
         val total = dbService.selectTotalGames()
         val played = dbService.selectTotalPlayedCount()
         val wins = dbService.selectWinedGamesCount()

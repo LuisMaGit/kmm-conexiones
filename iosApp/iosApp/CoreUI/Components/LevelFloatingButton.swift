@@ -24,7 +24,8 @@ struct LevelFloatingButton: View {
                 Rectangle()
                     .fill(CColors.orange)
                     .frame(
-                        maxWidth: .infinity, maxHeight: LevelFloatingButtonContracts.HEIGHT
+                        maxWidth: .infinity,
+                        maxHeight: 50
                     )
                 CText(
                     key: "levels_floating_button",
@@ -33,10 +34,6 @@ struct LevelFloatingButton: View {
             }
         }
     }
-}
-
-enum LevelFloatingButtonContracts {
-    static let HEIGHT = 50.0
 }
 
 #Preview {

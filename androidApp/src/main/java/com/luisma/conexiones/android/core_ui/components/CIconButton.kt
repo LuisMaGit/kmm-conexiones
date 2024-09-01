@@ -10,9 +10,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import com.luisma.conexiones.android.R
 import com.luisma.conexiones.android.core_ui.theme.CThemeProvider
+import com.luisma.conexiones.android.core_ui.theme.cDefaultIconSize
+import com.luisma.conexiones.android.core_ui.theme.cSpace4
 
 @Composable
 fun CIconButton(
@@ -21,12 +22,12 @@ fun CIconButton(
     enabled: Boolean = true,
     iconColor: Color? = null,
     onTap: () -> Unit,
-    iconSize: Dp = C_ICON_SIZE
+    iconSize: Dp = cDefaultIconSize
 ) {
     Box(
         modifier = modifier
             .clickable(enabled = enabled) { onTap() }
-            .padding(CIconButtonContracts.PADDING_CONTENT),
+            .padding(cSpace4),
         contentAlignment = Alignment.Center
     ) {
         CIcon(
@@ -37,9 +38,6 @@ fun CIconButton(
     }
 }
 
-object CIconButtonContracts {
-    val PADDING_CONTENT = 5.dp
-}
 
 
 @Preview

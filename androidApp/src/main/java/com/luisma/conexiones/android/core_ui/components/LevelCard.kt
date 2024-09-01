@@ -20,6 +20,10 @@ import com.luisma.conexiones.android.core_ui.helpers.fontSizeNonScaledSp
 import com.luisma.conexiones.android.core_ui.theme.CColor
 import com.luisma.conexiones.android.core_ui.theme.CTheme
 import com.luisma.conexiones.android.core_ui.theme.CThemeProvider
+import com.luisma.conexiones.android.core_ui.theme.cBorderRadius4
+import com.luisma.conexiones.android.core_ui.theme.cBorderRadius8
+import com.luisma.conexiones.android.core_ui.theme.cFontSize12
+import com.luisma.conexiones.android.core_ui.theme.cFontSize64sp
 
 @Composable
 fun LevelCard(
@@ -46,6 +50,7 @@ fun LevelCard(
     }
 
     val colors = CTheme.colors
+    val smallCardHeight = 20.dp
 
     fun smallCardColor(): Color {
         return when (card.type) {
@@ -92,10 +97,10 @@ fun LevelCard(
 
     Box(
         modifier = modifier
-            .size(LevelCardContracts.SIZE)
+            .size(levelsCardSize)
             .background(
                 color = colors.softContrastScreenBackground,
-                shape = RoundedCornerShape(LevelCardContracts.BORDER_R)
+                shape = RoundedCornerShape(cBorderRadius8)
             ),
         contentAlignment = Alignment.Center
     ) {
@@ -109,32 +114,32 @@ fun LevelCard(
                         modifier = Modifier
                             .background(
                                 color = smallCardColor(),
-                                shape = RoundedCornerShape(LevelCardContracts.SMALL_CARD_BORDER_R)
+                                shape = RoundedCornerShape(cBorderRadius4)
                             )
                             .size(
-                                width = LevelCardContracts.SMALL_CARD_WIDTH,
-                                height = LevelCardContracts.SMALL_CARD_HEIGHT
+                                width = 68.dp,
+                                height = smallCardHeight
                             ),
                         contentAlignment = Alignment.Center
                     ) {
                         CText(
                             text = stringResource(id = smallCardText()),
-                            fontSize = LevelCardContracts.SMALL_CARD_FONT.fontSizeNonScaledSp,
+                            fontSize = cFontSize12.fontSizeNonScaledSp,
                             color = colors.softContrastScreenBackground
                         )
                     }
                 } else {
                     Box(
-                        modifier = Modifier.size(LevelCardContracts.SMALL_CARD_HEIGHT)
+                        modifier = Modifier.size(smallCardHeight)
                     )
                 }
                 // level number
                 CText(
                     modifier = Modifier.padding(
-                        vertical = LevelCardContracts.LEVELS_FONT_PADDING
+                        vertical = 2.dp
                     ),
                     text = card.level,
-                    fontSize = LevelCardContracts.LEVELS_FONT_SIZE.fontSizeNonScaledSp
+                    fontSize = cFontSize64sp
                 )
                 // lives or lock
                 BottomComponent()
@@ -158,26 +163,16 @@ fun LevelCardHeart(
             tint = color,
         )
         CText(
-            modifier = Modifier.padding(bottom = LevelCardContracts.HEART_FONT_PADDING),
+            modifier = Modifier.padding(bottom = 2.dp),
             text = lives,
             color = colorText,
-            fontSize = LevelCardContracts.HEART_FONT_SIZE.fontSizeNonScaledSp
+            fontSize = cFontSize12.fontSizeNonScaledSp
         )
     }
 }
 
-object LevelCardContracts {
-    val BORDER_R = 8.dp
-    val SIZE = 140.dp
-    const val LEVELS_FONT_SIZE = 64
-    val LEVELS_FONT_PADDING = 2.dp
-    const val HEART_FONT_SIZE = 12
-    val HEART_FONT_PADDING = 2.dp
-    val SMALL_CARD_BORDER_R = 4.dp
-    val SMALL_CARD_WIDTH = 68.dp
-    val SMALL_CARD_HEIGHT = 20.dp
-    const val SMALL_CARD_FONT = 12
-}
+val levelsCardSize = 140.dp
+
 
 data class LevelCardData(
     val type: LevelCardType,

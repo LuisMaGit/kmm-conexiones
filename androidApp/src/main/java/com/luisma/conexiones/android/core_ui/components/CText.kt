@@ -11,14 +11,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import com.luisma.conexiones.android.core_ui.theme.CTheme
-import com.luisma.conexiones.android.core_ui.theme.cFontDefaultSize
+import com.luisma.conexiones.android.core_ui.theme.cFontSize16sp
 import com.luisma.conexiones.android.core_ui.theme.ceraFontFamily
 
 @Composable
 fun CText(
     text: String,
     modifier: Modifier = Modifier,
-    fontSize: TextUnit = cFontDefaultSize,
+    fontSize: TextUnit = cFontSize16sp,
     color: Color = CTheme.colors.textDefault,
     maxLines: Int = Int.MAX_VALUE,
     overflow: TextOverflow = TextOverflow.Ellipsis,

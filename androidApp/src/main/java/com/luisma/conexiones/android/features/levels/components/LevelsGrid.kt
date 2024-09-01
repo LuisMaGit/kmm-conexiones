@@ -19,10 +19,10 @@ import androidx.compose.ui.unit.dp
 import com.luisma.conexiones.android.R
 import com.luisma.conexiones.android.core_ui.components.CButton
 import com.luisma.conexiones.android.core_ui.components.LevelCard
-import com.luisma.conexiones.android.core_ui.components.LevelCardContracts
 import com.luisma.conexiones.android.core_ui.components.LevelCardData
 import com.luisma.conexiones.android.core_ui.components.LevelFloatingButton
 import com.luisma.conexiones.android.core_ui.components.LevelLoadingCard
+import com.luisma.conexiones.android.core_ui.components.levelsCardSize
 import com.luisma.conexiones.android.core_ui.helpers.header
 import com.luisma.conexiones.android.core_ui.theme.CThemeProvider
 import com.luisma.conexiones.android.features.levels.LevelsEvents
@@ -36,11 +36,15 @@ fun LevelsGrid(
     state: LevelsState,
     sendEvent: (event: LevelsEvents) -> Unit
 ) {
+    // ui
+    val cardsPadding = 12.dp
+    val gridPaddingBottom = 50.dp
+    val levelsCardAmount = 2
 
     // loading cards
     val topLoadingHeader = if (state.reachFirstPage) 0 else 1
     val bottomLoadingCards =
-        if (state.reachLastPage) 0 else LevelsGridContracts.LOADING_CARDS_AMOUNT
+        if (state.reachLastPage) 0 else levelsCardAmount
 
     // scroll
     val gridState = rememberLazyGridState()
@@ -62,15 +66,15 @@ fun LevelsGrid(
         // grid
         LazyVerticalGrid(
             columns = GridCells.FixedSize(
-                size = LevelCardContracts.SIZE + LevelsGridContracts.LEVELS_CARDS_PADDING * 2
+                size = levelsCardSize + cardsPadding * 2
             ),
             horizontalArrangement = Arrangement.Center,
             state = gridState,
-            contentPadding = PaddingValues(bottom = LevelsGridContracts.GRID_PADDING_BOTTOM)
+            contentPadding = PaddingValues(bottom = gridPaddingBottom)
         ) {
 
             val cardModifier = Modifier.padding(
-                all = LevelsGridContracts.LEVELS_CARDS_PADDING,
+                all = cardsPadding,
             )
 
             // top loaders
@@ -80,7 +84,7 @@ fun LevelsGrid(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(
-                                horizontal = LevelsGridContracts.LEVELS_CARDS_PADDING
+                                horizontal = cardsPadding
                             ),
                         text = stringResource(id = R.string.levels_previous_levels_btn),
                         iconId = R.drawable.ic_arrow_up_solid,
@@ -137,11 +141,6 @@ fun LevelsGrid(
     }
 }
 
-object LevelsGridContracts {
-    val LEVELS_CARDS_PADDING = 12.dp
-    val GRID_PADDING_BOTTOM = 50.dp
-    const val LOADING_CARDS_AMOUNT = 2
-}
 
 @Preview
 @Composable

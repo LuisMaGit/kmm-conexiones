@@ -24,31 +24,34 @@ import com.luisma.conexiones.android.core_ui.helpers.fontSizeNonScaledSp
 import com.luisma.conexiones.android.core_ui.helpers.getColorByDomainColor
 import com.luisma.conexiones.android.core_ui.helpers.getColorCoreByDifficulty
 import com.luisma.conexiones.android.core_ui.theme.CTheme
+import com.luisma.conexiones.android.core_ui.theme.cBorderRadius4
+import com.luisma.conexiones.android.core_ui.theme.cFontSize16
+import com.luisma.conexiones.android.core_ui.theme.cSpace8
 import com.luisma.conexiones.contracts.GAME_AMOUNT_DIFFICULTIES
 
 @Composable
 fun KHDifficultyGraph(modifier: Modifier = Modifier) {
     Row(
         modifier = modifier
-            .padding(top = KHDifficultyGraphContracts.PADDING_TOP)
+            .padding(top = cSpace8)
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.Center
     ) {
         Column(
-            modifier = Modifier.padding(end = KHDifficultyGraphContracts.PADDING_END_FIRST_COLUMN)
+            modifier = Modifier.padding(end = cSpace8)
         ) {
             for (box in 0..<GAME_AMOUNT_DIFFICULTIES) {
                 val color = getColorByDomainColor(getColorCoreByDifficulty(box))
                 Box(
                     modifier = Modifier
-                        .padding(bottom = KHDifficultyGraphContracts.PADDING_BOTTOM_COLOR_BOX)
+                        .padding(bottom = cSpace8)
                         .background(
                             color = color,
                             shape = RoundedCornerShape(
-                                KHDifficultyGraphContracts.BORDER_R_BOTTOM_COLOR_BOX
+                                cBorderRadius4
                             )
                         )
-                        .size(KHDifficultyGraphContracts.SIZE_COLOR_BOX)
+                        .size(20.dp)
                 )
             }
         }
@@ -59,10 +62,10 @@ fun KHDifficultyGraph(modifier: Modifier = Modifier) {
             CText(
                 text = stringResource(id = R.string.kh_ex_graph_simple),
                 fontWeight = FontWeight.Normal,
-                fontSize = KHDifficultyGraphContracts.FONT_SIZE_TEXT.fontSizeNonScaledSp
+                fontSize = cFontSize16.fontSizeNonScaledSp
             )
             Icon(
-                modifier = modifier.height(KHDifficultyGraphContracts.SIZE_ICON_ARROW),
+                modifier = modifier.height(74.dp),
                 painter = painterResource(id = R.drawable.pic_big_arrow_down),
                 contentDescription = "",
                 tint = CTheme.colors.iconDefault
@@ -70,18 +73,8 @@ fun KHDifficultyGraph(modifier: Modifier = Modifier) {
             CText(
                 text = stringResource(id = R.string.kh_ex_graph_hard),
                 fontWeight = FontWeight.Normal,
-                fontSize = KHDifficultyGraphContracts.FONT_SIZE_TEXT.fontSizeNonScaledSp
+                fontSize = cFontSize16.fontSizeNonScaledSp
             )
         }
     }
-}
-
-object KHDifficultyGraphContracts {
-    val PADDING_TOP = 8.dp
-    val PADDING_END_FIRST_COLUMN = 8.dp
-    val PADDING_BOTTOM_COLOR_BOX = 8.dp
-    val BORDER_R_BOTTOM_COLOR_BOX = 4.dp
-    val SIZE_COLOR_BOX = 20.dp
-    val SIZE_ICON_ARROW = 74.dp
-    const val FONT_SIZE_TEXT = 16
 }

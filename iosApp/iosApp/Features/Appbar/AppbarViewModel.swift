@@ -15,24 +15,7 @@ enum AppbarEvents {
     case setLives(lives: Int)
 }
 
-struct AppbarState {
-    var showTutorial: Bool
-    var showStats: Bool
-    var showLives: Bool
-    var lives: Int
 
-    init(
-        showTutorial: Bool = false,
-        showStats: Bool = false,
-        showLives: Bool = false,
-        lives: Int = -1
-    ) {
-        self.showTutorial = showTutorial
-        self.showStats = showStats
-        self.lives = lives
-        self.showLives = showLives
-    }
-}
 
 class AppbarViewModel: ObservableObject {
     // state

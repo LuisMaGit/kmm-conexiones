@@ -22,7 +22,7 @@ fun LevelFloatingButton(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .height(LevelFloatingButtonContracts.HEIGHT)
+            .height(50.dp)
             .background(color = CColor.orange)
             .clickable { onTap() },
         contentAlignment = Alignment.Center
@@ -34,7 +34,3 @@ fun LevelFloatingButton(
     }
 }
 
-
-object LevelFloatingButtonContracts {
-    val HEIGHT = 50.dp
-}

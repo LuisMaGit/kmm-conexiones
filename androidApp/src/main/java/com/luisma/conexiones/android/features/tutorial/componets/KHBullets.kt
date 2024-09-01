@@ -1,6 +1,5 @@
 package com.luisma.conexiones.android.features.tutorial.componets
 
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.InlineTextContent
@@ -21,7 +20,9 @@ import com.luisma.conexiones.android.core_ui.components.CIcon
 import com.luisma.conexiones.android.core_ui.components.CText
 import com.luisma.conexiones.android.core_ui.theme.CColor
 import com.luisma.conexiones.android.core_ui.theme.CTheme
-import com.luisma.conexiones.android.core_ui.theme.cFontDefaultSize
+import com.luisma.conexiones.android.core_ui.theme.cFontSize16
+import com.luisma.conexiones.android.core_ui.theme.cFontSize16sp
+import com.luisma.conexiones.android.core_ui.theme.cSpace8
 import com.luisma.conexiones.android.core_ui.theme.ceraFontFamily
 
 @Composable
@@ -31,17 +32,17 @@ fun KHBullets() {
         color = CTheme.colors.textDefault,
         fontFamily = ceraFontFamily,
         fontWeight = FontWeight.Normal,
-        fontSize = cFontDefaultSize
+        fontSize = cFontSize16sp
     )
     KHBulletPoint(
-        modifier = Modifier.padding(bottom = KHBulletsContracts.PADDING_BOTTOM_BULLETS)
+        modifier = Modifier.padding(bottom = cSpace8)
     ) {
 
         val boldStyle = SpanStyle(
             color = CTheme.colors.textDefault,
             fontFamily = ceraFontFamily,
             fontWeight = FontWeight.Bold,
-            fontSize = cFontDefaultSize
+            fontSize = cFontSize16sp
         )
         Text(
             text = buildAnnotatedString {
@@ -60,7 +61,7 @@ fun KHBullets() {
         )
     }
     KHBulletPoint(
-        modifier = Modifier.padding(bottom = KHBulletsContracts.PADDING_BOTTOM_BULLETS)
+        modifier = Modifier.padding(bottom = cSpace8)
     ) {
         CText(
             text = stringResource(id = R.string.kh_bullet_2),
@@ -68,7 +69,7 @@ fun KHBullets() {
         )
     }
     KHBulletPoint(
-        modifier = Modifier.padding(bottom = KHBulletsContracts.PADDING_BOTTOM_BULLETS)
+        modifier = Modifier.padding(bottom = cSpace8)
     ) {
         BasicText(
             text = buildAnnotatedString {
@@ -84,15 +85,15 @@ fun KHBullets() {
                     khHeartIconId,
                     InlineTextContent(
                         placeholder = Placeholder(
-                            width = KHBulletsContracts.SIZE_GREEN_HEART.sp,
-                            height = KHBulletsContracts.SIZE_GREEN_HEART.sp,
+                            width = cFontSize16.sp,
+                            height = cFontSize16.sp,
                             placeholderVerticalAlign = PlaceholderVerticalAlign.TextCenter
                         ),
                     ) {
                         CIcon(
                             id = R.drawable.ic_heart_solid,
                             tint = CColor.green,
-                            size = KHBulletsContracts.SIZE_GREEN_HEART.dp
+                            size = cFontSize16.dp
                         )
                     }
                 )
@@ -100,17 +101,12 @@ fun KHBullets() {
         )
     }
     KHBulletPoint(
-        modifier = Modifier.padding(bottom = KHBulletsContracts.PADDING_BOTTOM_BULLETS)
+        modifier = Modifier.padding(bottom = cSpace8)
     ) {
         CText(
             text = stringResource(id = R.string.kh_bullet_4),
             fontWeight = FontWeight.Normal
         )
     }
-}
-
-object KHBulletsContracts {
-    val PADDING_BOTTOM_BULLETS = 8.dp
-    const val SIZE_GREEN_HEART = 16.0
 }
 

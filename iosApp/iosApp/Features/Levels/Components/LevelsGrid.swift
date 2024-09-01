@@ -9,20 +9,24 @@
 import shared
 import SwiftUI
 
+let levelsSpacingGrid = 20.0
+let levelsSizeGrid = levelCardSize + levelsSpacingGrid
+let levelsSizePrevButton = 2 * levelsSizeGrid
+
 struct LevelsGrid: View {
     @EnvironmentObject var vm: LevelsViewModel
 
     let columns = [
         GridItem(
             .adaptive(
-                minimum: LevelsGridContracts.SIZE_GRID,
-                maximum: LevelsGridContracts.SIZE_GRID
+                minimum: levelsSizeGrid,
+                maximum: levelsSizeGrid
             )
         ),
         GridItem(
             .adaptive(
-                minimum: LevelsGridContracts.SIZE_GRID,
-                maximum: LevelsGridContracts.SIZE_GRID
+                minimum: levelsSizeGrid,
+                maximum: levelsSizeGrid
             )
         ),
     ]
@@ -56,20 +60,20 @@ struct LevelsGrid: View {
                         // btn previous page
                         if !vm.state.reachFirstPage {
                             CButton(
-                                width: LevelsGridContracts.SIZE_PREV_BUTTON,
+                                width: levelsSizePrevButton,
                                 svg: .arrowUp,
                                 key: "levels_previous_levels_btn",
                                 onTap: {
                                     vm.sendEvent(event: .previousPage)
                                 }
                             )
-                            .padding([.top, .bottom], LevelsGridContracts.PADDING_V_PREV_BUTTON)
+                            .padding([.top, .bottom], cSpace8)
                         }
 
                         // grid levels
                         LazyVGrid(
                             columns: columns,
-                            spacing: LevelsGridContracts.SPACING_GRID
+                            spacing: levelsSpacingGrid
                         ) {
                             ForEach(
                                 0 ..< count,
@@ -123,13 +127,4 @@ struct LevelsGrid: View {
             }
         }
     }
-}
-
-
-
-enum LevelsGridContracts {
-    static let SPACING_GRID = 20.0
-    static let SIZE_GRID = LevelCardContracts.SIZE + SPACING_GRID
-    static let SIZE_PREV_BUTTON = 2 * SIZE_GRID
-    static let PADDING_V_PREV_BUTTON = 8.0
 }

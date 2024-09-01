@@ -8,16 +8,7 @@
 
 import SwiftUI
 
-enum LevelCardContracts {
-    static let BARDER_R = 8.0
-    static let SIZE = 140.0
-    static let FONT_SIZE_LEVES = 64.0
-    static let WIDTH_STATE_CARD = 68.0
-    static let HEIGHT_STATE_CARD = 20.0
-    static let BORDER_R_STATE_CARD = 4.0
-    static let FONT_SIZE_STATE_CARD = 12.0
-    static let FONT_SIZE_LIVES = 12.0
-}
+let levelCardSize = 140.0
 
 struct LevelCardData {
     let type: LevelCardType
@@ -85,7 +76,7 @@ struct LevelCard: View {
                             )
                             CText(
                                 text: cardData.level,
-                                fontSize: LevelCardContracts.FONT_SIZE_LEVES,
+                                fontSize: cFontSize64,
                                 fixedFont: true
                             )
                             bottomItem(
@@ -122,7 +113,7 @@ struct LevelCard: View {
                 CText(
                     text: livesReward,
                     color: colorBox,
-                    fontSize: LevelCardContracts.FONT_SIZE_LIVES,
+                    fontSize: cFontSize12,
                     fixedFont: true
                 )
             }
@@ -131,12 +122,12 @@ struct LevelCard: View {
 
     @ViewBuilder func rectangle(colorBox: Color) -> some View {
         RoundedRectangle(
-            cornerRadius: LevelCardContracts.BARDER_R
+            cornerRadius: cFontSize8
         )
         .fill(colorBox)
         .frame(
-            width: LevelCardContracts.SIZE,
-            height: LevelCardContracts.SIZE
+            width: levelCardSize,
+            height: levelCardSize
         )
     }
 
@@ -148,7 +139,7 @@ struct LevelCard: View {
             Rectangle()
                 .frame(
                     width: 0,
-                    height: LevelCardContracts.HEIGHT_STATE_CARD
+                    height: 20.0
                 )
         } else {
             let color = switch type {
@@ -173,23 +164,22 @@ struct LevelCard: View {
 
             ZStack {
                 RoundedRectangle(
-                    cornerRadius: LevelCardContracts.BORDER_R_STATE_CARD
+                    cornerRadius: cBorderRadius4
                 )
                 .fill(color)
                 .frame(
-                    width: LevelCardContracts.WIDTH_STATE_CARD,
-                    height: LevelCardContracts.HEIGHT_STATE_CARD
+                    width: 68,
+                    height: 20
                 )
                 CText(
                     key: text,
                     color: colorBox,
-                    fontSize: LevelCardContracts.FONT_SIZE_STATE_CARD,
+                    fontSize: cFontSize12,
                     fixedFont: true
                 )
             }
         }
     }
-    
 }
 
 #Preview {

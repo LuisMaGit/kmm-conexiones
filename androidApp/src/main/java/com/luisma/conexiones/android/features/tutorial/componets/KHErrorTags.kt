@@ -18,6 +18,8 @@ import com.luisma.conexiones.android.core_ui.components.CIcon
 import com.luisma.conexiones.android.core_ui.components.CText
 import com.luisma.conexiones.android.core_ui.helpers.fontSizeNonScaledSp
 import com.luisma.conexiones.android.core_ui.theme.CColor
+import com.luisma.conexiones.android.core_ui.theme.cFontSize16
+import com.luisma.conexiones.android.core_ui.theme.cSpace4
 
 @Composable
 fun KHErrorTags() {
@@ -48,56 +50,46 @@ fun KHErrorTags() {
 fun KHErrorTag(errors: Int, hearts: Int) {
     Row(
         modifier = Modifier
-            .padding(bottom = KHErrorTagContracts.PADDING_BOTTOM_ERRORS),
+            .padding(bottom = cSpace4),
         horizontalArrangement = Arrangement.Start,
     ) {
         Box(
             modifier = Modifier
-                .width(KHErrorTagContracts.SIZE_BOX_ERROR_AMOUNT),
+                .width(20.dp),
             contentAlignment = Alignment.Center
         ) {
             CText(
-                text = "$errors"
+                text = "$errors",
+                fontSize = cFontSize16.fontSizeNonScaledSp
             )
         }
         CText(
-            modifier = Modifier.width(width = KHErrorTagContracts.SIZE_BOX_ERROR_TEXT),
+            modifier = Modifier.width(width = 60.dp),
             text = if (errors == 1) {
                 stringResource(id = R.string.kh_error)
             } else {
                 stringResource(id = R.string.kh_errors)
             },
             fontWeight = FontWeight.Normal,
-            fontSize = KHErrorTagContracts.FONT_SIZE_TEXT.fontSizeNonScaledSp
+            fontSize = cFontSize16.fontSizeNonScaledSp
         )
         CText(
-            modifier = Modifier.width(width = KHErrorTagContracts.SIZE_BOX_EQUAL),
+            modifier = Modifier.width(width = 20.dp),
             text = stringResource(id = R.string.reusable_equal),
-            fontSize = KHErrorTagContracts.FONT_SIZE_TEXT.fontSizeNonScaledSp
+            fontSize = cFontSize16.fontSizeNonScaledSp
         )
         Row(
-            modifier = Modifier.width(KHErrorTagContracts.SIZE_BOX_HEARTS_ICONS),
+            modifier = Modifier.width(100.dp),
             verticalAlignment = Alignment.Bottom
         ) {
             for (heart in 0..<hearts) {
                 CIcon(
-                    modifier = Modifier.padding(end = KHErrorTagContracts.PADDING_END_HEARTS_ICON),
+                    modifier = Modifier.padding(end = cSpace4),
                     id = R.drawable.ic_heart_solid,
                     tint = CColor.green,
-                    size = KHErrorTagContracts.SIZE_HEARTS_ICON
+                    size = 12.dp
                 )
             }
         }
     }
-}
-
-object KHErrorTagContracts {
-    val PADDING_BOTTOM_ERRORS = 4.dp
-    val PADDING_END_HEARTS_ICON = 4.dp
-    val SIZE_HEARTS_ICON = 12.dp
-    val SIZE_BOX_HEARTS_ICONS = 100.dp
-    val SIZE_BOX_EQUAL = 20.dp
-    const val FONT_SIZE_TEXT = 16
-    val SIZE_BOX_ERROR_AMOUNT = 20.dp
-    val SIZE_BOX_ERROR_TEXT = 60.dp
 }

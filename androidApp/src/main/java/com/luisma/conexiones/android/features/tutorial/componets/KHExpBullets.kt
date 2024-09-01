@@ -6,10 +6,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.luisma.conexiones.android.R
 import com.luisma.conexiones.android.core_ui.components.CText
+import com.luisma.conexiones.android.core_ui.theme.cFontSize16sp
+import com.luisma.conexiones.android.core_ui.theme.cSpace4
+import com.luisma.conexiones.android.core_ui.theme.cSpace8
 
 @Composable
 fun KHExpBullets() {
@@ -29,25 +30,19 @@ fun KHBulletExp(
     body: String
 ) {
     KHBulletPoint(
-        modifier = Modifier.padding(bottom = KHExpContracts.PADDING_BOTTOM_BULLET)
+        modifier = Modifier.padding(bottom = cSpace4)
     ) {
         Row {
             CText(
-                modifier = Modifier.padding(end = KHExpContracts.PADDING_END_TITLE),
+                modifier = Modifier.padding(end = cSpace8),
                 text = title,
-                fontSize = KHExpContracts.FONT_SIZE_BULLET
+                fontSize = cFontSize16sp
             )
             CText(
                 text = body,
-                fontSize = KHExpContracts.FONT_SIZE_BULLET,
+                fontSize = cFontSize16sp,
                 fontWeight = FontWeight.Normal
             )
         }
     }
-}
-
-object KHExpContracts {
-    val PADDING_BOTTOM_BULLET = 4.dp
-    val PADDING_END_TITLE = 8.dp
-    val FONT_SIZE_BULLET = 16.sp
 }

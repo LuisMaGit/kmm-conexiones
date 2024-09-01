@@ -24,8 +24,10 @@ import com.luisma.conexiones.android.R
 import com.luisma.conexiones.android.core_ui.components.CIconButton
 import com.luisma.conexiones.android.core_ui.components.CLogo
 import com.luisma.conexiones.android.core_ui.components.CText
-import com.luisma.conexiones.android.core_ui.components.C_ICON_SIZE
 import com.luisma.conexiones.android.core_ui.theme.CColor
+import com.luisma.conexiones.android.core_ui.theme.cDefaultIconSize
+import com.luisma.conexiones.android.core_ui.theme.cSpace16
+import com.luisma.conexiones.android.core_ui.theme.cSpace24
 
 @Composable
 fun AppBar(
@@ -47,12 +49,8 @@ fun AppBar(
 
     Row(
         modifier = modifier
-            .padding(
-                horizontal = AppBarContracts.HORIZONTAL_PADDING
-            )
-            .height(
-                AppBarContracts.HEIGHT
-            ),
+            .padding(horizontal = cSpace16)
+            .height(50.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         when (leadingComponentType) {
@@ -68,17 +66,17 @@ fun AppBar(
                         onTapLogo()
                     }
                 },
-                size = AppBarContracts.LOGO_SIZE
+                size = 30.dp
             )
         }
         Spacer(modifier = Modifier.weight(1f))
         CIconButton(
-            modifier = Modifier.padding(end = AppBarContracts.ICONS_PADDING),
+            modifier = Modifier.padding(end = cSpace24),
             id = R.drawable.ic_question,
             onTap = { sendEvent(AppBarEvents.ToggleTutorial) },
         )
         CIconButton(
-            modifier = Modifier.padding(end = AppBarContracts.ICONS_PADDING),
+            modifier = Modifier.padding(end = cSpace24),
             id = R.drawable.ic_chart_bar,
             onTap = { sendEvent(AppBarEvents.ToggleStats) }
         )
@@ -88,7 +86,7 @@ fun AppBar(
         )
         Box(
             contentAlignment = Alignment.BottomCenter,
-            modifier = Modifier.height(C_ICON_SIZE)
+            modifier = Modifier.height(cDefaultIconSize)
         ) {
             CText(
                 text = "x${state.lives}"
@@ -103,14 +101,6 @@ enum class AppBarLeadingComponentType {
     Logo,
     BackArrow
 }
-
-object AppBarContracts {
-    val HEIGHT = 50.dp
-    val ICONS_PADDING = 24.dp
-    val HORIZONTAL_PADDING = 16.dp
-    val LOGO_SIZE = 30.dp
-}
-
 
 @Composable
 fun AppbarIconLives(

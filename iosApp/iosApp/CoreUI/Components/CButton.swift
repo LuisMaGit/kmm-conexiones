@@ -8,19 +8,16 @@
 
 import SwiftUI
 
-enum CButtonContracts {
-    static let BORDER_R_BOX = 4.0
-    static let HEIGHT_BOX = 44.0
-    static let OFFSET_BACK_BOX = 5.0
-    static let SIZE_ICON = 12.0
-}
-
 struct CButton: View {
     let color: Color
     let width: Double
     let svg: CSVGType
     let key: LocalizedStringKey
     let onTap: () -> Void
+
+    let iconSize = 12.0
+    let offsetBackBox = 5.0
+    let heightBox = 44.0
 
     init(
         color: Color = CColors.green,
@@ -52,7 +49,7 @@ struct CButton: View {
             }
             .frame(
                 width: width,
-                height: CButtonContracts.HEIGHT_BOX + CButtonContracts.OFFSET_BACK_BOX
+                height: heightBox + offsetBackBox
             )
         }
     }
@@ -61,8 +58,8 @@ struct CButton: View {
         HStack {
             CIcon(
                 type: svg,
-                width: CButtonContracts.SIZE_ICON,
-                height: CButtonContracts.SIZE_ICON
+                width: iconSize,
+                height: iconSize
             )
             CText(key: key, fixedFont: true)
         }
@@ -70,30 +67,30 @@ struct CButton: View {
 
     @ViewBuilder func backRect() -> some View {
         RoundedRectangle(
-            cornerRadius: CButtonContracts.BORDER_R_BOX
+            cornerRadius: cBorderRadius4
         )
         .fill(CColors.black)
         .frame(
             width: width,
-            height: CButtonContracts.HEIGHT_BOX + CButtonContracts.OFFSET_BACK_BOX
+            height: heightBox + offsetBackBox
         )
     }
 
     @ViewBuilder func frontRect(width: Double) -> some View {
         RoundedRectangle(
-            cornerRadius: CButtonContracts.BORDER_R_BOX
+            cornerRadius: cBorderRadius4
         )
         .fill(color)
         .background(
             RoundedRectangle(
-                cornerRadius: CButtonContracts.BORDER_R_BOX,
+                cornerRadius: cBorderRadius4,
                 style: .continuous
             )
             .stroke(CColors.black, lineWidth: 2)
         )
         .frame(
             width: width,
-            height: CButtonContracts.HEIGHT_BOX
+            height: heightBox
         )
     }
 }

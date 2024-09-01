@@ -6,10 +6,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.luisma.conexiones.android.core_ui.helpers.fontSizeNonScaledSp
 import com.luisma.conexiones.android.core_ui.theme.CTheme
+import com.luisma.conexiones.android.core_ui.theme.cFontSize16
+import com.luisma.conexiones.android.core_ui.theme.cFontSize16sp
+import com.luisma.conexiones.android.core_ui.theme.cFontSize32
+import com.luisma.conexiones.android.core_ui.theme.cSpace4
 
 @Composable
 fun StatsBigNumber(
@@ -25,25 +27,20 @@ fun StatsBigNumber(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         CText(
-            modifier = Modifier.padding(bottom = StatsBigNumber.SPACING_TEXT),
+            modifier = Modifier.padding(bottom = cSpace4),
             text = number.toString(),
-            fontSize = StatsBigNumber.BIG_NUM_FONT_SIZE.fontSizeNonScaledSp,
+            fontSize = cFontSize32.fontSizeNonScaledSp,
             color = bigNumberColor
         )
         CText(
             text = description,
-            fontSize = StatsBigNumber.DESCRIPTION_FONT_SIZE
+            fontSize = cFontSize16.fontSizeNonScaledSp
         )
         CText(
             text = "[$percentage%]",
-            fontSize = StatsBigNumber.DESCRIPTION_FONT_SIZE
+            fontSize = cFontSize16.fontSizeNonScaledSp
         )
     }
 
 }
 
-object StatsBigNumber {
-    const val BIG_NUM_FONT_SIZE = 32
-    val DESCRIPTION_FONT_SIZE = 16.sp
-    val SPACING_TEXT = 4.dp
-}

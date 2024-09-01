@@ -18,6 +18,10 @@ import com.luisma.conexiones.android.core_ui.helpers.fontSizeNonScaledSp
 import com.luisma.conexiones.android.core_ui.theme.CColor
 import com.luisma.conexiones.android.core_ui.theme.CTheme
 import com.luisma.conexiones.android.core_ui.theme.CThemeProvider
+import com.luisma.conexiones.android.core_ui.theme.cFontSize16
+import com.luisma.conexiones.android.core_ui.theme.cScreenFraction
+import com.luisma.conexiones.android.core_ui.theme.cSpace24
+import com.luisma.conexiones.android.core_ui.theme.cSpace4
 
 @Composable
 fun StatsDistributionBars(
@@ -27,14 +31,14 @@ fun StatsDistributionBars(
 ) {
 
     if (values.count() != percentage.count()
-        && values.isEmpty()
-        && values.all { it == 0 }
+        || values.isEmpty()
+        || values.all { it == 0 }
     ) {
         return
     }
 
     Column(
-        modifier = Modifier.fillMaxWidth(StatsDistributionContracts.FRACTION_SCREEN)
+        modifier = Modifier.fillMaxWidth(cScreenFraction)
     ) {
         for (idx in 0..<values.count()) {
             val perc = percentage[idx]
@@ -43,19 +47,19 @@ fun StatsDistributionBars(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = StatsDistributionContracts.PADDING_BETWEEN_BARS),
+                    .padding(bottom = cSpace24),
                 horizontalArrangement = Arrangement.Start,
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 //num
                 Box(
                     modifier = Modifier
-                        .width(width = StatsDistributionContracts.WIDTH_FIRST_NUMB),
+                        .width(width = 24.dp),
                     contentAlignment = Alignment.CenterStart
                 ) {
                     CText(
                         text = "${idx + 1}",
-                        fontSize = StatsDistributionContracts.NUMB_FONT_SIZE.fontSizeNonScaledSp
+                        fontSize = cFontSize16.fontSizeNonScaledSp
                     )
                 }
                 // graph
@@ -63,7 +67,7 @@ fun StatsDistributionBars(
                     StatsBar(
                         modifier = Modifier
                             .fillMaxWidth(
-                                perc.toFloat() / StatsDistributionContracts.MAX_FRACTION_BAR
+                                perc.toFloat() / 110
                             ),
                         color = graphColor,
                     )
@@ -72,11 +76,11 @@ fun StatsDistributionBars(
                 if (value != 0)
                     Box(
                         modifier = Modifier
-                            .padding(start = StatsDistributionContracts.PADDING_LAST_NUMB)
+                            .padding(start = cSpace4)
                     ) {
                         CText(
                             text = value.toString(),
-                            fontSize = StatsDistributionContracts.NUMB_FONT_SIZE.fontSizeNonScaledSp,
+                            fontSize = cFontSize16.fontSizeNonScaledSp,
                             color = graphColor
                         )
                     }
@@ -86,14 +90,7 @@ fun StatsDistributionBars(
     }
 }
 
-object StatsDistributionContracts {
-    val WIDTH_FIRST_NUMB = 24.dp
-    val PADDING_LAST_NUMB = 4.dp
-    val PADDING_BETWEEN_BARS = 24.dp
-    const val FRACTION_SCREEN = .9f
-    const val MAX_FRACTION_BAR = 110
-    const val NUMB_FONT_SIZE = 16
-}
+
 
 @Preview
 @Composable

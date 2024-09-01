@@ -8,7 +8,7 @@ import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import com.luisma.conexiones.android.R
 import com.luisma.conexiones.android.core_ui.theme.CTheme
-import com.luisma.conexiones.android.core_ui.theme.cFontDefaultSize
+import com.luisma.conexiones.android.core_ui.theme.cFontSize16sp
 import com.luisma.conexiones.android.core_ui.theme.ceraFontFamily
 
 @Composable
@@ -17,13 +17,13 @@ fun KHExample() {
         color = CTheme.colors.textDefault,
         fontFamily = ceraFontFamily,
         fontWeight = FontWeight.Bold,
-        fontSize = KHExpContracts.FONT_SIZE_BULLET,
+        fontSize = cFontSize16sp,
     )
     val defStyle = SpanStyle(
         color = CTheme.colors.textDefault,
         fontFamily = ceraFontFamily,
         fontWeight = FontWeight.Normal,
-        fontSize = KHExpContracts.FONT_SIZE_BULLET,
+        fontSize = cFontSize16sp,
     )
     Text(
         text = buildAnnotatedString {

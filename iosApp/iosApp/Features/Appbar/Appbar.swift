@@ -57,7 +57,7 @@ struct Appbar: View {
             ) {
                 CIcon(type: .question)
             }
-            .padding([.trailing], AppBarContracts.PADDING_ICONS)
+            .padding([.trailing], cSpace16)
             // stats
             RippleButton(
                 transparent: false,
@@ -67,7 +67,7 @@ struct Appbar: View {
             ) {
                 CIcon(type: .chart)
             }
-            .padding([.trailing], AppBarContracts.PADDING_ICONS)
+            .padding([.trailing], cSpace16)
             // lives
             AppbarLives(
                 lives: "x\(String(livesToShow))",
@@ -75,30 +75,35 @@ struct Appbar: View {
                 onTapLives: { vm.sendEvent(event: .openLives(show: true)) }
             )
         }
-        .padding([.leading, .trailing], AppBarContracts.PADDING_H_BAR)
-        .padding([.bottom], AppBarContracts.PADDING_V_BAR)
+        .padding([.leading, .trailing], cSpace16)
+        .padding([.bottom], cSpace16)
         .onChange(of: lives) { lives in
             vm.sendEvent(event: .setLives(lives: lives))
         }
         .onChange(of: showTutorial) { show in
             vm.sendEvent(event: .openTutorial(show: show))
         }
-        .sheet(
-            isPresented: showTutorialBinding,
-            onDismiss: {
-                vm.sendEvent(event: .openTutorial(show: false))
+        .modifier(
+            CSheet(
+                isPresented: showTutorialBinding,
+                onDismiss: {
+                    vm.sendEvent(event: .openTutorial(show: false))
+                }
+            ) {
+                Tutorial()
             }
-        ) {
-            CText(text: "TUTORIAL")
-        }
-        .sheet(
-            isPresented: showStatsBinding,
-            onDismiss: {
-                vm.sendEvent(event: .openStats(show: false))
+        )
+        .modifier(
+            CSheet(
+                isPresented: showStatsBinding,
+                onDismiss: {
+                    vm.sendEvent(event: .openStats(show: false))
+                },
+                usePresentationDetents: true
+            ) {
+                Stats()
             }
-        ) {
-            CText(text: "STATS")
-        }
+        )
         .sheet(
             isPresented: showLivesBinding,
             onDismiss: {
@@ -108,10 +113,4 @@ struct Appbar: View {
             CText(text: "LIVES")
         }
     }
-}
-
-enum AppBarContracts {
-    static let PADDING_ICONS = 16.0
-    static let PADDING_H_BAR = 16.0
-    static let PADDING_V_BAR = 16.0
 }

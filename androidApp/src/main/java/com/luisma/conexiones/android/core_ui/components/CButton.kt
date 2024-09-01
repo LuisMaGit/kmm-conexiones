@@ -18,10 +18,13 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.luisma.conexiones.android.R
+import com.luisma.conexiones.android.core_ui.helpers.fontSizeNonScaledSp
 import com.luisma.conexiones.android.core_ui.theme.CColor
 import com.luisma.conexiones.android.core_ui.theme.CThemeProvider
+import com.luisma.conexiones.android.core_ui.theme.cBorderRadius4
+import com.luisma.conexiones.android.core_ui.theme.cFontSize16
+import com.luisma.conexiones.android.core_ui.theme.cSpace8
 
 @Composable
 fun CButton(
@@ -32,25 +35,25 @@ fun CButton(
     onTap: () -> Unit
 ) {
 
-    val shape = RoundedCornerShape(size = CButtonContracts.BOX_BORDER_R)
-
+    val shape = RoundedCornerShape(size = cBorderRadius4)
+    val borderPadding = 0.75.dp
     Box(
         modifier = modifier
-            .height(CButtonContracts.BOX_TOTAL_H)
+            .height(51.dp)
             .clip(shape = shape)
             .background(CColor.black)
     ) {
         Box(
             modifier = Modifier
-                .height(CButtonContracts.BOX_INTERNAL_H)
+                .height(48.dp)
                 .fillMaxWidth()
                 .clip(shape = shape)
                 .border(
-                    width = CButtonContracts.BORDER_PADDING,
+                    width = borderPadding,
                     color = CColor.black,
                     shape = shape
                 )
-                .padding(CButtonContracts.BORDER_PADDING)
+                .padding(borderPadding)
                 .background(
                     color = color,
                     shape = shape
@@ -64,30 +67,20 @@ fun CButton(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 CIcon(
-                    modifier = Modifier.padding(end = CButtonContracts.ICON_TEXT_SPACE),
+                    modifier = Modifier.padding(end = cSpace8),
                     id = iconId,
-                    size = CButtonContracts.ICON_SIZE,
+                    size = 14.dp,
                     tint = CColor.black
                 )
                 CText(
                     text = text,
-                    fontSize = CButtonContracts.TEXT_FONT_SIZE,
+                    fontSize = cFontSize16.fontSizeNonScaledSp,
                     maxLines = 1,
                     color = CColor.black
                 )
             }
         }
     }
-}
-
-object CButtonContracts {
-    val TEXT_FONT_SIZE = 14.sp
-    val ICON_SIZE = 10.dp
-    val ICON_TEXT_SPACE = 8.dp
-    val BORDER_PADDING = 0.75.dp
-    val BOX_INTERNAL_H = 48.dp
-    val BOX_TOTAL_H = 51.dp
-    val BOX_BORDER_R = 4.dp
 }
 
 @Preview
@@ -97,7 +90,7 @@ private fun CButtonPreview() {
         darkTheme = false
     ) {
         CButton(
-            modifier = Modifier.width(100.dp),
+            modifier = Modifier.width(200.dp),
             text = "Enviar",
             iconId = R.drawable.ic_rocket,
             onTap = {}

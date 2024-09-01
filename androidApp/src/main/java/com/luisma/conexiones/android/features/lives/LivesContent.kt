@@ -11,7 +11,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.luisma.conexiones.android.R
 import com.luisma.conexiones.android.core_ui.components.CButton
 import com.luisma.conexiones.android.core_ui.components.CIcon
@@ -19,6 +18,10 @@ import com.luisma.conexiones.android.core_ui.components.CText
 import com.luisma.conexiones.android.core_ui.helpers.fontSizeNonScaledSp
 import com.luisma.conexiones.android.core_ui.theme.CColor
 import com.luisma.conexiones.android.core_ui.theme.CThemeProvider
+import com.luisma.conexiones.android.core_ui.theme.cFontSize20sp
+import com.luisma.conexiones.android.core_ui.theme.cFontSize32
+import com.luisma.conexiones.android.core_ui.theme.cSpace24
+import com.luisma.conexiones.android.core_ui.theme.cSpace4
 
 @Composable
 fun LivesContent(
@@ -31,19 +34,19 @@ fun LivesContent(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = LivesContracts.PADDING_ICON_VERTICAL),
+                .padding(vertical = cSpace24),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
             CIcon(
-                modifier = Modifier.padding(end = LivesContracts.PADDING_ICON_END),
+                modifier = Modifier.padding(end = cSpace4),
                 id = if (state.hasLife) R.drawable.ic_heart_solid else R.drawable.ic_heart,
                 tint = if (state.hasLife) CColor.green else null,
-                size = LivesContracts.ICON_SIZE
+                size = 48.dp
             )
             CText(
                 text = "x${state.lives}",
-                fontSize = LivesContracts.LIVES_FONT_SIZE.fontSizeNonScaledSp
+                fontSize = cFontSize32.fontSizeNonScaledSp
             )
         }
         // description
@@ -54,7 +57,7 @@ fun LivesContent(
             } else {
                 stringResource(id = R.string.lives_no_lives_subtitle)
             },
-            fontSize = LivesContracts.DESCRIPTION_FONT_SIZE
+            fontSize = cFontSize20sp
         )
         // button
         CButton(
@@ -66,14 +69,6 @@ fun LivesContent(
     }
 
 
-}
-
-object LivesContracts {
-    const val LIVES_FONT_SIZE = 32
-    val DESCRIPTION_FONT_SIZE = 20.sp
-    val PADDING_ICON_END = 6.dp
-    val ICON_SIZE = 48.dp
-    val PADDING_ICON_VERTICAL = 24.dp
 }
 
 @Preview

@@ -15,12 +15,14 @@ public enum CSVGType: String {
     case broom = "svg_broom"
     case chart = "svg_chart"
     case heartFilled = "svg_heart_filled"
+    case heartFilled16px = "svg_heart_filled_kh"
     case heart = "svg_heart"
     case lock = "svg_lock"
     case unlock = "svg_unlock"
     case question = "svg_question"
     case rocket = "svg_rocket"
     case shuffle = "svg_shuffle"
+    case picArrowDown = "svg_pic_big_arrow_down"
 }
 
 public struct CIcon: View {
@@ -29,12 +31,11 @@ public struct CIcon: View {
     let height: Double
     let color: Color?
 
-    static let defaultSize = 24.0
 
     init(
         type: CSVGType,
-        width: Double = defaultSize,
-        height: Double = defaultSize,
+        width: Double = cDefIconSize,
+        height: Double = cDefIconSize,
         color: Color? = nil
     ) {
         self.type = type
