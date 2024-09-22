@@ -34,9 +34,10 @@ fun AppBar(
     modifier: Modifier = Modifier,
     leadingComponentType: AppBarLeadingComponentType = AppBarLeadingComponentType.BackArrow,
     onTapLogo: (() -> Unit)? = null,
+    onBack: (() -> Unit)? = null,
     sendEvent: (event: AppBarEvents) -> Unit,
     state: AppBarState,
-    lives: Int?,
+    lives: Int? = null,
     openTutorial: Boolean = false
 ) {
 
@@ -57,7 +58,11 @@ fun AppBar(
             AppBarLeadingComponentType.BackArrow ->
                 CIconButton(
                     id = R.drawable.ic_arrow_left_solid,
-                    onTap = {}
+                    onTap = {
+                        if (onBack != null) {
+                            onBack()
+                        }
+                    }
                 )
 
             AppBarLeadingComponentType.Logo -> CLogo(

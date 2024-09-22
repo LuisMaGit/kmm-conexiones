@@ -10,8 +10,16 @@ class StringUtilsMockService : IStringUtilsService {
     override fun separatedWordsToWordList(str: String?): List<String> {
         TODO("Not yet implemented")
     }
+
+    override fun joinWords(words: List<String>): String {
+        TODO("Not yet implemented")
+    }
+
+    override fun joinDifficulties(difficulties: Set<Int>): String {
+        TODO("Not yet implemented")
+    }
 }
 
-fun getStringUtilsMockService() : StringUtilsMockService {
+fun stringUtilsMockService() : StringUtilsMockService {
     return StringUtilsMockService()
 }

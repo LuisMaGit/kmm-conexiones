@@ -4,10 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.luisma.conexiones.android.router.RoutePayload
+import com.luisma.conexiones.android.router.RouterService
+import com.luisma.conexiones.android.router.Routes
 import com.luisma.conexiones.models.BasicScreenState
-import com.luisma.conexiones.services.GamesLevelsService
+import com.luisma.conexiones.services.IUserProfileService
 import com.luisma.conexiones.services.PaginationService
-import com.luisma.conexiones.services.UserProfileService
+import com.luisma.conexiones.services.game.GamesLevelsService
 import com.luisma.conexiones.services.gamesLevelsService
 import com.luisma.conexiones.services.paginationService
 import com.luisma.conexiones.services.userProfileService
@@ -20,7 +23,8 @@ import kotlinx.coroutines.launch
 class LevelsViewModel(
     private val gamesLevelsService: GamesLevelsService,
     private val paginationService: PaginationService,
-    private val userProfileService: UserProfileService
+    private val userProfileService: IUserProfileService,
+    private val routerService: RouterService
 ) : ViewModel() {
 
     companion object {
@@ -29,7 +33,8 @@ class LevelsViewModel(
                 LevelsViewModel(
                     gamesLevelsService = gamesLevelsService(),
                     paginationService = paginationService(),
-                    userProfileService = userProfileService()
+                    userProfileService = userProfileService(),
+                    routerService = RouterService
                 )
             }
         }
@@ -48,7 +53,9 @@ class LevelsViewModel(
             LevelsEvents.RefreshScreen -> refreshScreen()
             LevelsEvents.GetPreviousPage -> getPreviousPage()
             LevelsEvents.GetNextPage -> getNextPage()
+            LevelsEvents.DismissTutorial -> dismissTutorial()
             is LevelsEvents.OnVisibilityChangePlayingCard -> onVisibilityChange(show = event.show)
+            is LevelsEvents.OnTapLevel -> onTapLevel(gameId = event.gameId)
         }
     }
 
@@ -96,6 +103,14 @@ class LevelsViewModel(
 
     private fun refreshScreen() {
         initVM(resetState = true)
+    }
+
+    private fun dismissTutorial() {
+        if (_state.value.openTutorial) {
+            _state.update {
+                it.copy(openTutorial = false)
+            }
+        }
     }
 
     private fun setInitialScrollDone() {
@@ -175,4 +190,16 @@ class LevelsViewModel(
             it.copy(playingRowIsShowing = show)
         }
     }
+
+    private fun onTapLevel(gameId: Int) {
+        viewModelScope.launch {
+            routerService.goTo(
+                RoutePayload(
+                    route = Routes.Game,
+                    payload = gameId.toString()
+                )
+            )
+        }
+    }
+
 }

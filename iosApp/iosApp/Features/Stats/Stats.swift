@@ -13,22 +13,21 @@ struct Stats: View {
     @ObservedObject var vm: StatsViewModel = .init()
 
     var body: some View {
-        ScrollView {
-            VStack(
-                alignment: .leading,
-                spacing: 0
-            ) {
-                // title
-                HStack(
+        VStack(
+            alignment: .leading,
+            spacing: 0
+        ) {
+            CSheetTitle(title: "stats_title")
+            ScrollView {
+                VStack(
+                    alignment: .leading,
                     spacing: 0
                 ) {
-                    CSheetTitle(title: "stats_title")
-                    Spacer()
-                }
-                if vm.state.screenState == .success {
-                    success()
-                } else {
-                    loading()
+                    if vm.state.screenState == .success {
+                        success()
+                    } else {
+                        loading()
+                    }
                 }
             }
         }

@@ -20,6 +20,7 @@ fun LevelLoadingCard(
     LevelCard(
         modifier = modifier,
         card = LevelCardData.empty(),
-        loading = true
+        loading = true,
+        onTap = {}
     )
 }

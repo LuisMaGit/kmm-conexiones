@@ -19,7 +19,7 @@ enum LevelsEvents {
 }
 
 class LevelsViewModel: ObservableObject {
-    // state
+    
     @Published public private(set) var state: LevelsState
     
     private let gameLevelsService: GamesLevelsService

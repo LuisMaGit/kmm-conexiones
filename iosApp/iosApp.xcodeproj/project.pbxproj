@@ -47,6 +47,9 @@
 		D6D2BFC32C7D1E3A00E42033 /* AppbarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D2BFC22C7D1E3A00E42033 /* AppbarViewModel.swift */; };
 		D6F201DD2C8236BD00321079 /* CSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F201DC2C8236BD00321079 /* CSheet.swift */; };
 		D6F201DF2C823D3600321079 /* CUIContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F201DE2C823D3600321079 /* CUIContracts.swift */; };
+		D6F87BE62C85D1C400DC9453 /* Lives.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F87BE52C85D1C400DC9453 /* Lives.swift */; };
+		D6F87BE82C85D46300DC9453 /* LivesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F87BE72C85D46300DC9453 /* LivesViewModel.swift */; };
+		D6F87BEA2C85D8C700DC9453 /* LivesState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F87BE92C85D8C700DC9453 /* LivesState.swift */; };
 		D6FB452D2C00A26A00688CBD /* LuimaLibBattery.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB452C2C00A26A00688CBD /* LuimaLibBattery.swift */; };
 		D6FB452F2C00A38000688CBD /* CColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB452E2C00A38000688CBD /* CColors.swift */; };
 		D6FB45312C00A56A00688CBD /* CThemeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6FB45302C00A56A00688CBD /* CThemeColors.swift */; };
@@ -100,6 +103,9 @@
 		D6D2BFC22C7D1E3A00E42033 /* AppbarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppbarViewModel.swift; sourceTree = "<group>"; };
 		D6F201DC2C8236BD00321079 /* CSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSheet.swift; sourceTree = "<group>"; };
 		D6F201DE2C823D3600321079 /* CUIContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CUIContracts.swift; sourceTree = "<group>"; };
+		D6F87BE52C85D1C400DC9453 /* Lives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lives.swift; sourceTree = "<group>"; };
+		D6F87BE72C85D46300DC9453 /* LivesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivesViewModel.swift; sourceTree = "<group>"; };
+		D6F87BE92C85D8C700DC9453 /* LivesState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivesState.swift; sourceTree = "<group>"; };
 		D6FB452C2C00A26A00688CBD /* LuimaLibBattery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuimaLibBattery.swift; sourceTree = "<group>"; };
 		D6FB452E2C00A38000688CBD /* CColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CColors.swift; sourceTree = "<group>"; };
 		D6FB45302C00A56A00688CBD /* CThemeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CThemeColors.swift; sourceTree = "<group>"; };
@@ -182,6 +188,7 @@
 		D624567D2C7339640036D676 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D6F87BE42C85D1AE00DC9453 /* Lives */,
 				D63C45602C82303A0038856A /* Tutorial */,
 				D6CD36292C803B6200181C4E /* Stats */,
 				D6D2BFBF2C7D1DDE00E42033 /* Appbar */,
@@ -285,6 +292,16 @@
 				D6F201DC2C8236BD00321079 /* CSheet.swift */,
 			);
 			path = Modifiers;
+			sourceTree = "<group>";
+		};
+		D6F87BE42C85D1AE00DC9453 /* Lives */ = {
+			isa = PBXGroup;
+			children = (
+				D6F87BE52C85D1C400DC9453 /* Lives.swift */,
+				D6F87BE72C85D46300DC9453 /* LivesViewModel.swift */,
+				D6F87BE92C85D8C700DC9453 /* LivesState.swift */,
+			);
+			path = Lives;
 			sourceTree = "<group>";
 		};
 		D6FB452B2C009AAD00688CBD /* CoreUI */ = {
@@ -472,6 +489,7 @@
 				D694E7F42C837BA800D0649E /* TutorialBulletsExample.swift in Sources */,
 				D694E7F22C8378EA00D0649E /* TutorialErrorRows.swift in Sources */,
 				D6C877522C84D2DC00C7E380 /* StatsState.swift in Sources */,
+				D6F87BE62C85D1C400DC9453 /* Lives.swift in Sources */,
 				D694E7FB2C83850100D0649E /* TutorialDifficultyGraph.swift in Sources */,
 				D6FB454A2C00AC6200688CBD /* CFont.swift in Sources */,
 				D659A72D2C77A02F000B6818 /* LevelsState.swift in Sources */,
@@ -481,6 +499,7 @@
 				D6FB45482C00AC4800688CBD /* CText.swift in Sources */,
 				D6FB452F2C00A38000688CBD /* CColors.swift in Sources */,
 				D6CD362D2C803B8300181C4E /* StatsViewModel.swift in Sources */,
+				D6F87BEA2C85D8C700DC9453 /* LivesState.swift in Sources */,
 				D659A72F2C77A1AA000B6818 /* LevelsViewModel.swift in Sources */,
 				D6C8774C2C84C73400C7E380 /* StatsWinLostTotalLabel.swift in Sources */,
 				D62456842C733AF20036D676 /* LevelCard.swift in Sources */,
@@ -497,6 +516,7 @@
 				D6D2BFC12C7D1E0B00E42033 /* Appbar.swift in Sources */,
 				D6C8774E2C84CD6800C7E380 /* StatsDistributionBars.swift in Sources */,
 				D659A72B2C779DB5000B6818 /* LevelFloatingButton.swift in Sources */,
+				D6F87BE82C85D46300DC9453 /* LivesViewModel.swift in Sources */,
 				D6F201DD2C8236BD00321079 /* CSheet.swift in Sources */,
 				D694E7F62C837DB700D0649E /* TutorialExampleDescription.swift in Sources */,
 				D6C877502C84D2B600C7E380 /* AppbarState.swift in Sources */,

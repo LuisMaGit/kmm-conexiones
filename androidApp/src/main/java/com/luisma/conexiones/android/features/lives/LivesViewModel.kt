@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.viewModelFactory
 import com.luisma.conexiones.models.BasicScreenState
-import com.luisma.conexiones.services.UserProfileService
+import com.luisma.conexiones.services.IUserProfileService
 import com.luisma.conexiones.services.userProfileService
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class LivesViewModel(
-    val userProfileService: UserProfileService
+    val userProfileService: IUserProfileService
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(LivesState.initial())

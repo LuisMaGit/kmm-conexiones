@@ -1,3 +1,8 @@
+selectGame:
+SELECT game_id, game, state, guessed_tries, guessed_difficulty, game_distribution
+FROM Game
+WHERE game_id = :game_id;
+
 selectLevelsPaginated:
 SELECT game_id, state, guessed_tries
 FROM Game
@@ -7,6 +12,11 @@ OFFSET :offset;
 selectTotalGames:
 SELECT COUNT()
 FROM Game;
+
+selectGameId:
+SELECT game_id
+FROM Game
+WHERE game_id = :game_id;
 
 selectCurrentlyPlayingGameRowId:
 SELECT game_id
@@ -33,3 +43,33 @@ selectGuessedTriesCount:
 SELECT COUNT()
 FROM Game
 WHERE state = 'WIN' AND guessed_tries = :guessed_tries;
+
+selectGameTries:
+SELECT guessed_tries
+FROM Game
+WHERE game_id = :game_id;
+
+selectGuessedDifficulty:
+SELECT guessed_difficulty
+FROM Game
+WHERE game_id = :game_id;
+
+updateGameState:
+UPDATE Game
+SET state = :state
+WHERE game_id = :game_id;
+
+updateGameDistribution:
+UPDATE Game
+SET game_distribution = :game_distribution
+WHERE game_id = :game_id;
+
+updateGameTries:
+UPDATE Game
+SET guessed_tries = :guessed_tries
+WHERE game_id = :game_id;
+
+updateGuessedDifficulty:
+UPDATE Game
+SET guessed_difficulty = :guessed_difficulty
+WHERE game_id = :game_id;

@@ -10,7 +10,7 @@ import Foundation
 import shared
 
 class StatsViewModel: ObservableObject {
-    // state
+    
     @Published public private(set) var state: StatsState
 
     private let statsService: StatsService

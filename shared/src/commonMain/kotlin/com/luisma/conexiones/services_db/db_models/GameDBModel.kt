@@ -5,5 +5,6 @@ data class GameDBModel(
     val game: String,
     val state: String,
     val guessedTries: Int,
-    val guessedDifficulty: String
+    val guessedDifficulty: String,
+    val gameDistribution: String,
 )

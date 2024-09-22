@@ -3,6 +3,7 @@
     <!--    reusable-->
     <string name="reusable_bullet">•</string>
     <string name="reusable_equal">=</string>
+    <string name="reusable_level">Nivel</string>
     <!--    levels-->
     <string name="levels_card_win">Ganaste</string>
     <string name="levels_card_lost">Perdiste</string>
@@ -45,14 +46,11 @@
     <string name="lives_lives_title">Tus vidas</string>
     <string name="lives_lives_subtitle">Mira un video por unos segundos y obtén una vida.</string>
     <!--    game-->
-    <string name="level_title">Nivel %1$d</string>
-    <string name="level_errors">Errores restantes</string>
+    <string name="level_errors">Errores restantes:</string>
     <string name="level_btn_uncheck">Desmarcar todo</string>
     <string name="level_btn_rotate">Rotar</string>
     <string name="level_btn_send">Enviar</string>
-    <string name="level_submit_tries_alert">Te faltan %1$d palabras por seleccionar</string>
     <string name="level_win">GANASTE 🎉</string>
-    <string name="level_next_level">Nivel %1$d</string>
     <string name="level_lost">PERDISTE</string>
     <string name="level_lost_no_lives">Te has quedado sin vidas, mira un video por unos segundos y obtén una vida para continuar.</string>
 </resources>

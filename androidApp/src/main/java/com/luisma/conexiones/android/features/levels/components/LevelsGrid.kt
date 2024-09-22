@@ -103,13 +103,15 @@ fun LevelsGrid(
                 LevelCard(
                     modifier = cardModifier,
                     card = LevelCardData(
+                        id = game.id,
                         type = mapLevelsState(game.gameState),
                         level = game.id.toString(),
-                        livesReward = game.livesEarnedFormatted
+                        livesReward = game.livesEarnedFormatted,
                     ),
                     checkVisibility = game.id == state.playingRowId,
                     onAppear = { sendEvent(LevelsEvents.OnVisibilityChangePlayingCard(show = true)) },
                     onDestroy = { sendEvent(LevelsEvents.OnVisibilityChangePlayingCard(show = false)) },
+                    onTap = { id -> sendEvent(LevelsEvents.OnTapLevel(gameId = id)) }
                 )
             }
 

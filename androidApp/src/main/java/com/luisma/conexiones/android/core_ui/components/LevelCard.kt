@@ -1,6 +1,7 @@
 package com.luisma.conexiones.android.core_ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
@@ -11,6 +12,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,6 +34,7 @@ fun LevelCard(
     loading: Boolean = false,
     onAppear: () -> Unit = {},
     onDestroy: () -> Unit = {},
+    onTap: (id: Int) -> Unit,
     checkVisibility: Boolean = false
 ) {
 
@@ -95,13 +98,21 @@ fun LevelCard(
         }
     }
 
+    val baseModifier = modifier
+        .size(levelsCardSize)
+        .clip(RoundedCornerShape(cBorderRadius8))
+        .background(
+            color = colors.softContrastScreenBackground
+        )
+
+    val optionalModifier = if (card.type == LevelCardType.Lock || loading) {
+        baseModifier
+    } else baseModifier.clickable {
+        onTap(card.id)
+    }
+
     Box(
-        modifier = modifier
-            .size(levelsCardSize)
-            .background(
-                color = colors.softContrastScreenBackground,
-                shape = RoundedCornerShape(cBorderRadius8)
-            ),
+        modifier = optionalModifier,
         contentAlignment = Alignment.Center
     ) {
         if (!loading) {
@@ -175,6 +186,7 @@ val levelsCardSize = 140.dp
 
 
 data class LevelCardData(
+    val id: Int,
     val type: LevelCardType,
     val level: String,
     val livesReward: String = "",
@@ -182,6 +194,7 @@ data class LevelCardData(
     companion object {
         fun empty(): LevelCardData {
             return LevelCardData(
+                id = -1,
                 type = LevelCardType.Lock,
                 level = "",
             )
@@ -205,66 +218,37 @@ private fun LevelCardPreview() {
         Column {
             LevelCard(
                 card = LevelCardData(
+                    id = -1,
                     type = LevelCardType.Win,
                     level = "1",
                     livesReward = "+2"
-                )
+                ),
+                onTap = {}
             )
             LevelCard(
                 card = LevelCardData(
+                    id = -1,
                     type = LevelCardType.Lost,
                     level = "2",
                     livesReward = "-1"
-                )
+                ),
+                onTap = {}
             )
             LevelCard(
                 card = LevelCardData(
+                    id = -1,
                     type = LevelCardType.Lock,
                     level = "3",
-                )
+                ),
+                onTap = {}
             )
             LevelCard(
                 card = LevelCardData(
+                    id = -1,
                     type = LevelCardType.Playing,
                     level = "4",
-                )
-            )
-        }
-    }
-}
-
-@Preview
-@Composable
-private fun LevelCardDarkPreview() {
-    CThemeProvider(
-        darkTheme = true
-    ) {
-        Column {
-            LevelCard(
-                card = LevelCardData(
-                    type = LevelCardType.Win,
-                    level = "1",
-                    livesReward = "+2"
-                )
-            )
-            LevelCard(
-                card = LevelCardData(
-                    type = LevelCardType.Lost,
-                    level = "2",
-                    livesReward = "-1"
-                )
-            )
-            LevelCard(
-                card = LevelCardData(
-                    type = LevelCardType.Lock,
-                    level = "3",
-                )
-            )
-            LevelCard(
-                card = LevelCardData(
-                    type = LevelCardType.Playing,
-                    level = "4",
-                )
+                ),
+                onTap = {}
             )
         }
     }

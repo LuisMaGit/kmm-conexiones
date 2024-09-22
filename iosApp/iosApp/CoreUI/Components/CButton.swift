@@ -10,7 +10,7 @@ import SwiftUI
 
 struct CButton: View {
     let color: Color
-    let width: Double
+    let width: CGFloat?
     let svg: CSVGType
     let key: LocalizedStringKey
     let onTap: () -> Void
@@ -21,7 +21,7 @@ struct CButton: View {
 
     init(
         color: Color = CColors.green,
-        width: Double = .infinity,
+        width: CGFloat? = nil,
         svg: CSVGType = .question,
         key: LocalizedStringKey = "",
         onTap: @escaping () -> Void

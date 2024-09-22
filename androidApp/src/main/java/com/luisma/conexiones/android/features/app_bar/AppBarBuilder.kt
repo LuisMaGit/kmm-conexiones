@@ -13,9 +13,11 @@ import com.luisma.conexiones.android.features.tutorial.TutorialBottomSheet
 @Composable
 fun AppBarBuilder(
     leadingComponentType: AppBarLeadingComponentType,
-    lives: Int?,
+    lives: Int? = null,
     onTapLogo: (() -> Unit)? = null,
-    openTutorial: Boolean = false
+    onBack: (() -> Unit)? = null,
+    openTutorial: Boolean = false,
+    onDismissTutorial: (() -> Unit)? = null
 ) {
 
     val appBarViewModel = viewModel<AppBarViewModel>(factory = AppBarViewModel.Factory)
@@ -27,6 +29,7 @@ fun AppBarBuilder(
         lives = lives,
         state = appBarState,
         onTapLogo = onTapLogo,
+        onBack = onBack,
         openTutorial = openTutorial
     )
 
@@ -55,7 +58,12 @@ fun AppBarBuilder(
     // tutorial
     if (appBarState.showTutorial) {
         TutorialBottomSheet(
-            onDismiss = { appBarViewModel.sendEvent(AppBarEvents.ToggleTutorial) }
+            onDismiss = {
+                if (onDismissTutorial != null) {
+                    onDismissTutorial()
+                }
+                appBarViewModel.sendEvent(AppBarEvents.ToggleTutorial)
+            }
         )
     }
 }

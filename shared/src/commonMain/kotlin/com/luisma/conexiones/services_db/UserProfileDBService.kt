@@ -1,9 +1,5 @@
 package com.luisma.conexiones.services_db
 
-import com.luisma.conexiones.platform.conSqlDriver
-import com.shared.db.ConexionesDatabase
-
-
 interface IUserProfileDBService {
     suspend fun selectLives(): Int
     suspend fun updateLives(lives: Int)

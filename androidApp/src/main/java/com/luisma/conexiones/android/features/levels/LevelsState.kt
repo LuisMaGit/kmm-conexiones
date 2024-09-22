@@ -1,7 +1,7 @@
 package com.luisma.conexiones.android.features.levels
 
 import com.luisma.conexiones.models.BasicScreenState
-import com.luisma.conexiones.models.GameData
+import com.luisma.conexiones.models.game.GameData
 
 data class LevelsState(
     val screenState: BasicScreenState,

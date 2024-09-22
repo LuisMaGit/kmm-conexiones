@@ -1,7 +1,7 @@
 package com.luisma.conexiones.android.features.levels
 
 import com.luisma.conexiones.android.core_ui.components.LevelCardType
-import com.luisma.conexiones.models.GameState
+import com.luisma.conexiones.models.game.GameState
 
 fun mapLevelsState(gameState: GameState): LevelCardType {
     return when(gameState) {

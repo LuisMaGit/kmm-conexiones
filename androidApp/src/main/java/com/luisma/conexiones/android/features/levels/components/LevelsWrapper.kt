@@ -9,6 +9,7 @@ import com.luisma.conexiones.android.features.app_bar.AppBarLeadingComponentType
 fun LevelsWrapper(
     lives: Int?,
     onTapLogo: () -> Unit,
+    onDismissTutorial: () -> Unit,
     openTutorial: Boolean,
     content: @Composable () -> Unit,
 ) {
@@ -17,7 +18,8 @@ fun LevelsWrapper(
             leadingComponentType = AppBarLeadingComponentType.Logo,
             lives = lives,
             onTapLogo = onTapLogo,
-            openTutorial = openTutorial
+            openTutorial = openTutorial,
+            onDismissTutorial = onDismissTutorial
         )
         content()
     }

@@ -1,11 +1,12 @@
-package com.luisma.conexiones.models
+package com.luisma.conexiones.models.game
 
 import kotlinx.serialization.Serializable
 
 data class GameTile(
     val words: List<String>,
     val description: String,
-    val difficulty: Int
+    val difficulty: Int,
+    val wordsJoined: String
 )
 
 @Serializable

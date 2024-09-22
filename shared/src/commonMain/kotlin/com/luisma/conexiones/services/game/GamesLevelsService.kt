@@ -1,12 +1,14 @@
-package com.luisma.conexiones.services
+package com.luisma.conexiones.services.game
 
-import com.luisma.conexiones.models.GameData
+import com.luisma.conexiones.models.game.GameData
+import com.luisma.conexiones.services.PageState
+import com.luisma.conexiones.services.PaginationService
 import com.luisma.conexiones.services_db.IGameDBService
 
 class GamesLevelsService(
     private val dbService: IGameDBService,
     private val paginationService: PaginationService,
-    private val gameDBMappersService: GameDBMappersService,
+    private val gameDBMappersService: IGameDBMappersService,
     private val gameLevelsInPage: Int,
 ) {
 

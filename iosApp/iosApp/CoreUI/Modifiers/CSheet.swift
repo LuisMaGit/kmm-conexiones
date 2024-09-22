@@ -11,19 +11,22 @@ import SwiftUI
 struct CSheet<SheetBody: View>: ViewModifier {
     let isPresented: Binding<Bool>
     let onDismiss: () -> Void
+    let useCustomHeight: Bool
+    let customHeightFraction: CGFloat
     let body: () -> SheetBody
-    let usePresentationDetents: Bool
 
     init(
         isPresented: Binding<Bool>,
         onDismiss: @escaping () -> Void,
-        usePresentationDetents: Bool = false,
+        useCustomHeight: Bool = false,
+        customHeightFraction: CGFloat = 0.5,
         body: @escaping () -> SheetBody
     ) {
         self.isPresented = isPresented
         self.onDismiss = onDismiss
         self.body = body
-        self.usePresentationDetents = usePresentationDetents
+        self.useCustomHeight = useCustomHeight
+        self.customHeightFraction = customHeightFraction
     }
 
     @Environment(\.colorScheme) var colorScheme
@@ -34,9 +37,10 @@ struct CSheet<SheetBody: View>: ViewModifier {
                 isPresented: isPresented,
                 onDismiss: onDismiss
             ) {
-                if #available(iOS 16.0, *), usePresentationDetents {
+               if #available(iOS 16.0, *), useCustomHeight {
                     sheetBody()
-                        .presentationDetents([.medium, .large])
+                        .presentationDetents([.fraction(customHeightFraction)])
+
                 } else {
                     sheetBody()
                 }

@@ -6,4 +6,7 @@ sealed class LevelsEvents {
     data object GetPreviousPage : LevelsEvents()
     data object GetNextPage : LevelsEvents()
     data class OnVisibilityChangePlayingCard(val show: Boolean) : LevelsEvents()
+    data class OnTapLevel(val gameId: Int) : LevelsEvents()
+
+    data object  DismissTutorial  : LevelsEvents()
 }

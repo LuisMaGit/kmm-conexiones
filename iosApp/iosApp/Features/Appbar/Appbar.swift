@@ -99,18 +99,23 @@ struct Appbar: View {
                 onDismiss: {
                     vm.sendEvent(event: .openStats(show: false))
                 },
-                usePresentationDetents: true
+                useCustomHeight: true,
+                customHeightFraction: 0.6
             ) {
                 Stats()
             }
         )
-        .sheet(
-            isPresented: showLivesBinding,
-            onDismiss: {
-                vm.sendEvent(event: .openLives(show: false))
+        .modifier(
+            CSheet(
+                isPresented: showLivesBinding,
+                onDismiss: {
+                    vm.sendEvent(event: .openLives(show: false))
+                },
+                useCustomHeight: true,
+                customHeightFraction: 0.4
+            ) {
+                Lives()
             }
-        ) {
-            CText(text: "LIVES")
-        }
+        )
     }
 }

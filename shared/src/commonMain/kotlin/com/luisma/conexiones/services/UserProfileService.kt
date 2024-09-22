@@ -1,13 +1,21 @@
 package com.luisma.conexiones.services
 
-import com.luisma.conexiones.models.GameState
+import com.luisma.conexiones.models.game.GameState
 import com.luisma.conexiones.services_db.IUserProfileDBService
+
+
+interface IUserProfileService {
+    fun gameLivesByStateAndTries(gameState: GameState, guessedTries: Int): Int
+    suspend fun getLives(): Int
+    suspend fun updateLives(lives: Int)
+    suspend fun appWasOpenedBefore(): Boolean
+}
 
 class UserProfileService(
     val userProfileDBService: IUserProfileDBService
-) {
+) : IUserProfileService {
 
-    fun gameLivesByStateAndTries(gameState: GameState, guessedTries: Int): Int {
+    override fun gameLivesByStateAndTries(gameState: GameState, guessedTries: Int): Int {
 
         if (gameState == GameState.Lost) {
             return -1
@@ -29,16 +37,16 @@ class UserProfileService(
 
     }
 
-    suspend fun getLives(): Int {
+    override suspend fun getLives(): Int {
         return userProfileDBService.selectLives()
     }
 
-    suspend fun updateLives(lives: Int) {
+    override suspend fun updateLives(lives: Int) {
         userProfileDBService.updateLives(lives)
     }
 
 
-    suspend fun appWasOpenedBefore(): Boolean {
+    override suspend fun appWasOpenedBefore(): Boolean {
         if (userProfileDBService.selectAppOpened() == 0) {
             userProfileDBService.updateAppOpened(opened = 1)
             return false

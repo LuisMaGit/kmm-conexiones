@@ -8,6 +8,7 @@ import androidx.compose.ui.text.PlatformTextStyle
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.TextUnit
 import com.luisma.conexiones.android.core_ui.theme.CTheme
@@ -23,7 +24,8 @@ fun CText(
     maxLines: Int = Int.MAX_VALUE,
     overflow: TextOverflow = TextOverflow.Ellipsis,
     fontFamily: FontFamily = ceraFontFamily,
-    fontWeight: FontWeight = FontWeight.Bold
+    fontWeight: FontWeight = FontWeight.Bold,
+    textAlign: TextAlign = TextAlign.Unspecified
 ) {
     Text(
         text = text,
@@ -37,7 +39,8 @@ fun CText(
             fontWeight = fontWeight,
             platformStyle = PlatformTextStyle(
                 includeFontPadding = false
-            )
+            ),
+            textAlign = textAlign
         )
     )
 }

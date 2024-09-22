@@ -9,7 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import com.luisma.conexiones.android.core_ui.theme.CTheme
 import com.luisma.conexiones.android.core_ui.theme.CThemeProvider
-import com.luisma.conexiones.android.features.levels.LevelsBuilder
+import com.luisma.conexiones.android.router.Router
+import com.luisma.conexiones.android.router.RouterService
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +22,9 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize()
                         .background(color = CTheme.colors.screenBackground),
                 ) {
-                    LevelsBuilder()
+                    Router(
+                        routerService = RouterService
+                    )
                 }
             }
         }

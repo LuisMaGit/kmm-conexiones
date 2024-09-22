@@ -1,4 +1,4 @@
-package com.luisma.conexiones.models
+package com.luisma.conexiones.models.game
 
 enum class GameState(val rawValue: String) {
     Win(rawValue = "WIN"),
