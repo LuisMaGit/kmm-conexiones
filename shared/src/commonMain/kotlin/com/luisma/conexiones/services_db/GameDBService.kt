@@ -8,7 +8,7 @@ interface IGameDBService {
     suspend fun selectGamesPaginated(limit: Int, offset: Int): List<GameDBModel>
     suspend fun selectTotalGames(): Int
     suspend fun selectGameId(gameId: Int): Int?
-    suspend fun selectCurrentlyPlayingGameRowId(): Int
+    suspend fun selectCurrentlyPlayingGameRowId(): Int?
     suspend fun selectWinedGamesCount(): Int
     suspend fun selectLostGamesCount(): Int
     suspend fun selectTotalPlayedCount(): Int
@@ -65,8 +65,8 @@ class GameDBService : IGameDBService {
     }
 
 
-    override suspend fun selectCurrentlyPlayingGameRowId(): Int {
-        return queries.selectCurrentlyPlayingGameRowId().executeAsOne().toInt()
+    override suspend fun selectCurrentlyPlayingGameRowId(): Int? {
+        return queries.selectCurrentlyPlayingGameRowId().executeAsOneOrNull()?.toInt()
     }
 
     override suspend fun selectWinedGamesCount(): Int {

@@ -1,5 +1,6 @@
 package com.luisma.conexiones.android.features.game
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -15,7 +16,13 @@ fun GameView(
 ) {
 
     LaunchedEffect(key1 = gameId) {
-        sendEvent(GameViewEvents.OnCreate(gameId = gameId))
+        sendEvent(
+            GameViewEvents.OnCreate(gameId = gameId)
+        )
+    }
+
+    BackHandler {
+        sendEvent(GameViewEvents.OnBack)
     }
 
     when (state.screenState) {

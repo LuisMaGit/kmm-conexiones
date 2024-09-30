@@ -1,7 +1,6 @@
 package com.luisma.conexiones.android.features.game.componets
 
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -21,7 +20,6 @@ import com.luisma.conexiones.android.core_ui.components.ScreenSizeBreakPoints
 import com.luisma.conexiones.android.core_ui.components.ScreenSizeHelper
 import com.luisma.conexiones.android.core_ui.components.game_cards.GameCardsContracts
 import com.luisma.conexiones.android.core_ui.theme.cFontSize16sp
-import com.luisma.conexiones.android.core_ui.theme.cFontSize36sp
 import com.luisma.conexiones.android.core_ui.theme.cSpace16
 import com.luisma.conexiones.android.core_ui.theme.cSpace24
 import com.luisma.conexiones.android.core_ui.theme.cSpace4
@@ -78,6 +76,14 @@ fun GameSuccess(
                     onTapCard = { column, row ->
                         sendEvent(
                             GameViewEvents.SelectWord(
+                                col = column,
+                                row = row
+                            )
+                        )
+                    },
+                    dismissAnimation = { column, row ->
+                        sendEvent(
+                            GameViewEvents.DismissAnimation(
                                 col = column,
                                 row = row
                             )

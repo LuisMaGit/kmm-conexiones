@@ -1,18 +1,18 @@
 package com.luisma.conexiones.android.features.game.componets
 
-import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.offset
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.luisma.conexiones.android.core_ui.components.game_cards.GameCardsContracts
 import com.luisma.conexiones.android.core_ui.components.game_cards.GuessedCard
 import com.luisma.conexiones.android.core_ui.components.game_cards.WordCard
+import com.luisma.conexiones.android.core_ui.components.game_cards.WordCardAnimationType
 import com.luisma.conexiones.android.core_ui.helpers.getColorByDomainColor
 import com.luisma.conexiones.android.core_ui.helpers.getColorCoreByDifficulty
+import com.luisma.conexiones.models.game.GameAnimationType
 import com.luisma.conexiones.models.game.GameGridRowState
 
 @Composable
@@ -21,6 +21,7 @@ fun GameGrid(
     cardType: GameCardsContracts,
     canSelectCards: Boolean,
     onTapCard: (column: Int, row: Int) -> Unit,
+    dismissAnimation: (column: Int, row: Int) -> Unit,
     gridRowsState: Map<Int, GameGridRowState>,
 ) {
 
@@ -39,6 +40,12 @@ fun GameGrid(
         return (cardType.wordCardWidth + cardType.cardSpacing) * column
     }
 
+    fun mapAnimation(animation: GameAnimationType): WordCardAnimationType {
+        return when (animation) {
+            GameAnimationType.NoAnimation -> WordCardAnimationType.NoAnimation
+            GameAnimationType.Scale -> WordCardAnimationType.Scale
+        }
+    }
 
     Box(
         modifier = modifier,
@@ -70,6 +77,8 @@ fun GameGrid(
                         column = dist.should.column,
                         row = dist.should.row,
                         sizeType = cardType,
+                        dismissAnimation = dismissAnimation,
+                        animationType = mapAnimation(dist.should.animationType)
                     )
                 }
             }

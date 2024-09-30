@@ -14,11 +14,11 @@ import SwiftUI
 class LivesViewModel: ObservableObject {
     @Published public private(set) var state: LivesState
 
-    private let userProfileService: UserProfileService
+    private let userProfileService: IUserProfileService
 
     init(
         state: LivesState = .init(),
-        userProfileService: UserProfileService = ServicesLocatorKt.userProfileService()
+        userProfileService: IUserProfileService = ServicesLocatorKt.userProfileService()
     ) {
         self.state = state
         self.userProfileService = userProfileService

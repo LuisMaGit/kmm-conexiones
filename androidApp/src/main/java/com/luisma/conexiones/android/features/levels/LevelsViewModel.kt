@@ -54,6 +54,7 @@ class LevelsViewModel(
             LevelsEvents.GetPreviousPage -> getPreviousPage()
             LevelsEvents.GetNextPage -> getNextPage()
             LevelsEvents.DismissTutorial -> dismissTutorial()
+            is LevelsEvents.RefreshFromFlag -> refreshFromFlag(flag = event.flag)
             is LevelsEvents.OnVisibilityChangePlayingCard -> onVisibilityChange(show = event.show)
             is LevelsEvents.OnTapLevel -> onTapLevel(gameId = event.gameId)
         }
@@ -62,16 +63,16 @@ class LevelsViewModel(
     private fun initVM(resetState: Boolean) {
         if (resetState) {
             _state.update {
-                LevelsState.initial()
+                LevelsState.initial().copy(
+                    refreshOnBackControlFlag = _state.value.refreshOnBackControlFlag
+                )
             }
         }
         viewModelScope.launch {
             val responsePlayingDef = async { gamesLevelsService.getLevelsPlayingPage() }
-            val responsePlayingRowIdDef = async { gamesLevelsService.getPlayingRowId() }
             val responseLivesDef = async { userProfileService.getLives() }
             val appWasOpenedBeforeDef = async { userProfileService.appWasOpenedBefore() }
             val responsePlaying = responsePlayingDef.await()
-            val responsePlayingRowId = responsePlayingRowIdDef.await()
             val responseLives = responseLivesDef.await()
             val appWasOpenedBefore = appWasOpenedBeforeDef.await()
 
@@ -88,10 +89,10 @@ class LevelsViewModel(
                         responsePlaying.pageState
                     ),
                     fetchedPages = setOf(responsePlaying.page),
-                    playingRowId = responsePlayingRowId,
+                    playingRowId = responsePlaying.playingRowId,
                     playingRowIdx = gamesLevelsService.getIndexOfRowId(
                         games = responsePlaying.games,
-                        rowId = responsePlayingRowId
+                        rowId = responsePlaying.playingRowId
                     ),
                     playingRowIsShowing = true,
                     lives = responseLives,
@@ -192,14 +193,35 @@ class LevelsViewModel(
     }
 
     private fun onTapLevel(gameId: Int) {
+        val canGo = gamesLevelsService.canGoToLevel(
+            gameId = gameId,
+            games = _state.value.games,
+            lives = _state.value.lives,
+        )
+        if (!canGo) {
+            return
+        }
+
         viewModelScope.launch {
-            routerService.goTo(
+            routerService.setRoute(
                 RoutePayload(
                     route = Routes.Game,
                     payload = gameId.toString()
                 )
             )
         }
+    }
+
+    private fun refreshFromFlag(flag: String) {
+        if (_state.value.refreshOnBackControlFlag == flag) {
+            return
+        }
+
+        _state.update {
+            it.copy(refreshOnBackControlFlag = flag)
+        }
+
+        refreshScreen()
     }
 
 }

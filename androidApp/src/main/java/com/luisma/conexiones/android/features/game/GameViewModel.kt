@@ -4,15 +4,21 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.luisma.conexiones.android.router.RoutePayload
 import com.luisma.conexiones.android.router.RouterService
+import com.luisma.conexiones.android.router.Routes
 import com.luisma.conexiones.models.BasicScreenState
-import com.luisma.conexiones.models.game.GameDistributionCoordinates
+import com.luisma.conexiones.models.game.GameAnimationType
 import com.luisma.conexiones.models.game.GameState
+import com.luisma.conexiones.services.INumbUtilsService
 import com.luisma.conexiones.services.IUserProfileService
 import com.luisma.conexiones.services.game.GamePlayService
 import com.luisma.conexiones.services.game.GameSelectionService
+import com.luisma.conexiones.services.game.IGameAnimationService
+import com.luisma.conexiones.services.gameAnimationService
 import com.luisma.conexiones.services.gamePlayService
 import com.luisma.conexiones.services.gameSelectionService
+import com.luisma.conexiones.services.numbUtilsService
 import com.luisma.conexiones.services.userProfileService
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,7 +30,9 @@ class GameViewModel(
     private val gamePlayService: GamePlayService,
     private val gameSelectionService: GameSelectionService,
     private val userProfileService: IUserProfileService,
-    private val routerService: RouterService
+    private val routerService: RouterService,
+    private val numbUtilsService: INumbUtilsService,
+    private val gameAnimationService: IGameAnimationService
 ) : ViewModel() {
 
     companion object {
@@ -34,7 +42,9 @@ class GameViewModel(
                     gamePlayService = gamePlayService(),
                     userProfileService = userProfileService(),
                     routerService = RouterService,
-                    gameSelectionService = gameSelectionService()
+                    gameSelectionService = gameSelectionService(),
+                    numbUtilsService = numbUtilsService(),
+                    gameAnimationService = gameAnimationService()
                 )
             }
         }
@@ -47,6 +57,7 @@ class GameViewModel(
         when (event) {
             is GameViewEvents.OnCreate -> onCrate(gameId = event.gameId)
             is GameViewEvents.SelectWord -> selectWord(col = event.col, row = event.row)
+            is GameViewEvents.DismissAnimation -> dismissAnimation(col = event.col, row = event.row)
             is GameViewEvents.GoToNextLevel -> goToNextLevel(nextLevelId = event.nextLevelId)
             GameViewEvents.MixGame -> mixGame()
             GameViewEvents.ClearSelection -> clearSelection()
@@ -102,7 +113,12 @@ class GameViewModel(
 
     private fun onBack() {
         viewModelScope.launch {
-            routerService.goBack()
+            routerService.setRoute(
+                RoutePayload(
+                    route = Routes.BackWithRefresh,
+                    payload = numbUtilsService.getRandomInt().toString()
+                )
+            )
         }
     }
 
@@ -110,10 +126,8 @@ class GameViewModel(
         val result = gameSelectionService.select(
             gridRowState = _state.value.gridRowsState,
             currentSelection = _state.value.currentSelection,
-            newCoordinates = GameDistributionCoordinates(
-                column = col,
-                row = row,
-            )
+            newColumn = col,
+            newRow = row
         )
 
         _state.update {
@@ -139,6 +153,23 @@ class GameViewModel(
             it.copy(
                 gridRowsState = result.gridRowState,
                 currentSelection = result.newSelection,
+            )
+        }
+    }
+
+    private fun dismissAnimation(
+        col: Int,
+        row: Int,
+    ) {
+        val resp = gameAnimationService.toggleAnimation(
+            gridRowState = _state.value.gridRowsState,
+            column = col,
+            row = row,
+            animationType = GameAnimationType.NoAnimation
+        )
+        _state.update {
+            it.copy(
+                gridRowsState = resp
             )
         }
     }
@@ -182,4 +213,5 @@ class GameViewModel(
 
         startGame(gameId = nextLevelId)
     }
+
 }

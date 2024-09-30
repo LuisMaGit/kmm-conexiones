@@ -1,11 +1,13 @@
 package com.luisma.conexiones.services
 
 import com.luisma.conexiones.contracts.GAME_LEVELS_IN_PAGE
+import com.luisma.conexiones.services.game.GameAnimationService
 import com.luisma.conexiones.services.game.GameDBMappersService
 import com.luisma.conexiones.services.game.GamePlayService
 import com.luisma.conexiones.services.game.GameSelectionService
 import com.luisma.conexiones.services.game.GameSortService
 import com.luisma.conexiones.services.game.GamesLevelsService
+import com.luisma.conexiones.services.game.IGameAnimationService
 import com.luisma.conexiones.services.game.IGameDBMappersService
 import com.luisma.conexiones.services_db.gameDBService
 import com.luisma.conexiones.services_db.userProfileDBService
@@ -70,7 +72,13 @@ fun gameSortService(): GameSortService {
 }
 
 fun gameSelectionService(): GameSelectionService {
-    return GameSelectionService()
+    return GameSelectionService(
+        gameAnimationService = gameAnimationService()
+    )
+}
+
+fun gameAnimationService() : IGameAnimationService {
+    return GameAnimationService()
 }
 
 

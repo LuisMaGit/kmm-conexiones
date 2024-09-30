@@ -28,17 +28,27 @@ fun Router(
                 when (routePayload.route) {
                     Routes.Levels -> navController.navigate(route = routePayload.route.routeName)
                     Routes.Game -> {
-
                         navController.navigate(route = "${routePayload.route.routeName}/${routePayload.payload}")
                     }
 
                     Routes.Back -> navController.popBackStack()
+                    Routes.BackWithRefresh -> {
+                        navController.previousBackStackEntry?.savedStateHandle?.set(
+                            routePayload.route.routeName,
+                            value = routePayload.payload
+                        )
+                        navController.popBackStack()
+                    }
                 }
             }
         }
 
-        composable(route = Routes.Levels.routeName) {
-            LevelsBuilder()
+        composable(route = Routes.Levels.routeName) { backStackEntry ->
+            val resetFlag = backStackEntry.savedStateHandle
+                .get<String>(Routes.BackWithRefresh.routeName)
+            LevelsBuilder(
+                resetFlag = resetFlag ?: ""
+            )
         }
 
         composable(

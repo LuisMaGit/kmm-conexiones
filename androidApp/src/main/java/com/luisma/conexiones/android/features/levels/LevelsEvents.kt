@@ -5,6 +5,7 @@ sealed class LevelsEvents {
     data object RefreshScreen : LevelsEvents()
     data object GetPreviousPage : LevelsEvents()
     data object GetNextPage : LevelsEvents()
+    data class RefreshFromFlag(val flag: String) : LevelsEvents()
     data class OnVisibilityChangePlayingCard(val show: Boolean) : LevelsEvents()
     data class OnTapLevel(val gameId: Int) : LevelsEvents()
 

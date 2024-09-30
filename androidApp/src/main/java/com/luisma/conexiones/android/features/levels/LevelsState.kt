@@ -13,6 +13,7 @@ data class LevelsState(
     val playingRowIsShowing: Boolean,
     val lives: Int,
     val openTutorial: Boolean,
+    val refreshOnBackControlFlag: String,
     // paging
     val startPage: Int,
     val reachFirstPage: Boolean,
@@ -34,7 +35,8 @@ data class LevelsState(
                 playingRowIdx = 0,
                 playingRowIsShowing = false,
                 lives = 0,
-                openTutorial = false
+                openTutorial = false,
+                refreshOnBackControlFlag = ""
             )
         }
     }

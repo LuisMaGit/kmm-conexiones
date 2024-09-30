@@ -12,6 +12,10 @@ class GameDBServiceMock : IGameDBService {
         TODO("Not yet implemented")
     }
 
+    override suspend fun selectGameId(gameId: Int): Int? {
+        TODO("Not yet implemented")
+    }
+
     override suspend fun selectCurrentlyPlayingGameRowId(): Int {
         TODO("Not yet implemented")
     }

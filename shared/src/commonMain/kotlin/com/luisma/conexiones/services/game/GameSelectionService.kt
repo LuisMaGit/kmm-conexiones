@@ -1,20 +1,26 @@
 package com.luisma.conexiones.services.game
 
 import com.luisma.conexiones.contracts.GAME_WORD_AMOUNT
+import com.luisma.conexiones.models.game.GameAnimationType
 import com.luisma.conexiones.models.game.GameDistribution
 import com.luisma.conexiones.models.game.GameDistributionCoordinates
 import com.luisma.conexiones.models.game.GameGridRowState
 
 class GameSelectionService(
-    private val columns: Int = GAME_WORD_AMOUNT
+    private val columns: Int = GAME_WORD_AMOUNT,
+    private val gameAnimationService: IGameAnimationService
 ) {
 
     fun select(
         gridRowState: Map<Int, GameGridRowState>,
         currentSelection: List<GameDistributionCoordinates>,
-        newCoordinates: GameDistributionCoordinates
+        newColumn: Int,
+        newRow: Int
     ): GameSelectionSelectResponse {
-
+        val newCoordinates = GameDistributionCoordinates(
+            column = newColumn,
+            row = newRow
+        )
         val newSelectedCoordinates = currentSelection.map { sel ->
             sel.copy()
         }.toMutableList()
@@ -23,20 +29,31 @@ class GameSelectionService(
             newCoordinates.row == new.row && newCoordinates.column == new.column
         }
 
-
-
-        if (idxNC != -1) {
-            newSelectedCoordinates.removeAt(idxNC)
-        } else {
+        val addWord = idxNC == -1
+        if (addWord) {
             newSelectedCoordinates.add(newCoordinates)
+        } else {
+            newSelectedCoordinates.removeAt(idxNC)
         }
 
         val newGrid = updateSelection(
             newSelectedCoordinates = newSelectedCoordinates,
             gridRowState = gridRowState
         )
+
+        val newGridWithAnimation = if (addWord) {
+            gameAnimationService.toggleAnimation(
+                gridRowState = newGrid,
+                column = newCoordinates.column,
+                row = newCoordinates.row,
+                animationType = GameAnimationType.Scale
+            )
+        } else {
+            newGrid
+        }
+
         return GameSelectionSelectResponse(
-            gridRowState = newGrid,
+            gridRowState = newGridWithAnimation,
             newSelection = newSelectedCoordinates
         )
     }
@@ -48,11 +65,21 @@ class GameSelectionService(
     ): List<GameDistributionCoordinates> {
         val whoHasTheItsInThisShould = mutableListOf<GameDistributionCoordinates>()
         currentSelection.forEach { sel ->
-            whoHasTheItsInThisShould.add(beforeRotationDistribution.first { it.its == sel }.should)
+            whoHasTheItsInThisShould.add(
+                beforeRotationDistribution.first {
+                    it.its.row == sel.row &&
+                            it.its.column == sel.column
+                }.should
+            )
         }
         val shouldOfTheIts = mutableListOf<GameDistributionCoordinates>()
         whoHasTheItsInThisShould.forEach { sel ->
-            shouldOfTheIts.add(afterRotationDistribution.first { it.should == sel }.its)
+            shouldOfTheIts.add(
+                afterRotationDistribution.first {
+                    it.should.row == sel.row &&
+                            it.should.column == sel.column
+                }.its
+            )
         }
         return shouldOfTheIts
     }
@@ -65,7 +92,7 @@ class GameSelectionService(
         newSelectedCoordinates.forEach { selected ->
             gridRowState.forEach { mapEntry ->
                 val idxSelected = mapEntry.value.distribution.indexOfFirst { dist ->
-                    dist.should == selected
+                    dist.should.row == selected.row && dist.should.column == selected.column
                 }
 
                 val newDistribution = mapEntry.value.distribution.map { it }.toMutableList()
@@ -122,8 +149,14 @@ class GameSelectionService(
         for (idx in 0..<currentSelection.count() - 1) {
             val sel = currentSelection[idx]
             val nextSel = currentSelection[idx + 1]
-            row = currentDistribution.first { dist -> dist.its == sel }.should.row
-            val nextRow = currentDistribution.first { dist -> dist.its == nextSel }.should.row
+            row = currentDistribution.first { dist ->
+                dist.its.row == sel.row &&
+                        dist.its.column == sel.column
+            }.should.row
+            val nextRow = currentDistribution.first { dist ->
+                dist.its.row == nextSel.row &&
+                        dist.its.column == nextSel.column
+            }.should.row
             if (row != nextRow) {
                 row = -1
                 break
@@ -152,10 +185,10 @@ class GameSelectionService(
 
         rowGuessedDistributionSorted.forEach { wordGuessed ->
             val idxWhooping = outputDistribution.indexOfFirst {
-                it.its == wordGuessed.should
+                it.its.row == wordGuessed.should.row && it.its.column == wordGuessed.should.column
             }
             val idxBig = outputDistribution.indexOfFirst {
-                it.should == wordGuessed.should
+                it.should.row == wordGuessed.should.row && it.should.column == wordGuessed.should.column
             }
             val whopping = outputDistribution[idxWhooping]
             val big = outputDistribution[idxBig]

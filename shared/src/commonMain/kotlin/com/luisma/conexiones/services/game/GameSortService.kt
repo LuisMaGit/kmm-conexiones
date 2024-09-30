@@ -158,7 +158,10 @@ class GameSortService(
                 fromIndex = fromIdx,
                 toIndex = toIdx
             )
-            if (!rowDistribution.all { dist -> dist.should == dist.its }) {
+            if (!rowDistribution.all { dist ->
+                    dist.should.column == dist.its.column &&
+                            dist.should.row == dist.its.row
+                }) {
                 toMixDistribution.addAll(rowDistribution)
                 mixedRows.add(row)
             }

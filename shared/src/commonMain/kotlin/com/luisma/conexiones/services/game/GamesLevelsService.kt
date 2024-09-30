@@ -1,6 +1,7 @@
 package com.luisma.conexiones.services.game
 
 import com.luisma.conexiones.models.game.GameData
+import com.luisma.conexiones.models.game.GameState
 import com.luisma.conexiones.services.PageState
 import com.luisma.conexiones.services.PaginationService
 import com.luisma.conexiones.services_db.IGameDBService
@@ -12,23 +13,20 @@ class GamesLevelsService(
     private val gameLevelsInPage: Int,
 ) {
 
-    suspend fun getPlayingRowId(): Int {
-        return dbService.selectCurrentlyPlayingGameRowId()
-    }
-
     suspend fun getLevelsPlayingPage(): GamesPageResponse {
-        val playingRowId = getPlayingRowId()
+        var playingRowId = dbService.selectCurrentlyPlayingGameRowId()
+        if (playingRowId == null) {
+            playingRowId = dbService.selectTotalGames()
+        }
         val playingPageIdxOffset = paginationService.getPlayingPageIdxScrollOffset(
             rowId = playingRowId
         )
-        val playingPage = paginationService.getPageByRowId(
-            rowId = playingRowId
-        )
-        val pageData = getLevelsByPage(
-            page = playingPage
-        )
+        val playingPage = paginationService.getPageByRowId(rowId = playingRowId)
+        val pageData = getLevelsByPage(page = playingPage)
+
         return pageData.copy(
-            firstPagePlayingLevelIdxOffset = playingPageIdxOffset
+            firstPagePlayingLevelIdxOffset = playingPageIdxOffset,
+            playingRowId = playingRowId
         )
     }
 
@@ -57,13 +55,26 @@ class GamesLevelsService(
         return if (idx == -1) 0 else idx
     }
 
+    fun canGoToLevel(
+        games: List<GameData>,
+        lives: Int,
+        gameId: Int,
+    ): Boolean {
+        if (lives > 0) {
+            return true
+        }
+
+        val game = games.first { it.id == gameId }
+        return game.gameState == GameState.Win || game.gameState == GameState.Lost
+    }
 }
 
 data class GamesPageResponse(
     val pageState: PageState,
     val page: Int,
     val games: List<GameData>,
-    val firstPagePlayingLevelIdxOffset: Int = 0
+    val firstPagePlayingLevelIdxOffset: Int = 0,
+    val playingRowId: Int = 0,
 )
 
 

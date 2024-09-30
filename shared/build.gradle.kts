@@ -45,6 +45,7 @@ kotlin {
         commonMain.dependencies {
             //put your multiplatform dependencies here
             implementation(libs.kotlin.serilization.json)
+            implementation(libs.kotlin.datetime)
         }
         androidMain.dependencies {
             implementation(libs.sqldelight.android.driver)

@@ -6,11 +6,14 @@ import androidx.compose.runtime.getValue
 import androidx.lifecycle.viewmodel.compose.viewModel
 
 @Composable
-fun LevelsBuilder() {
+fun LevelsBuilder(
+    resetFlag: String,
+) {
     val levelsViewModel = viewModel<LevelsViewModel>(factory = LevelsViewModel.Factory)
     val levelsState by levelsViewModel.state.collectAsState()
     Levels(
         state = levelsState,
-        sendEvent = { levelsViewModel.sendEvent(it) }
+        sendEvent = { levelsViewModel.sendEvent(it) },
+        resetFlag = resetFlag
     )
 }

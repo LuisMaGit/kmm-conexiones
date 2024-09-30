@@ -8,6 +8,10 @@ class NumbUtilsMockService(
     override fun unsortedListWithSize(size: Int): List<Int> {
         return unsortedListStub ?: emptyList()
     }
+
+    override fun getRandomInt(): Int {
+        TODO("Not yet implemented")
+    }
 }
 
 fun gameNumbUtilsMockService(

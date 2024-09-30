@@ -10,6 +10,7 @@ androidx-activityCompose = "1.8.0"
 sqldelight-driver = "2.0.0"
 kotlin-serilization = "2.0.0"
 kotlin-serilization-json = "1.6.3"
+kotlin-date-time = "0.6.1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -25,6 +26,7 @@ compose-material3 = { module = "androidx.compose.material3:material3", version.r
 sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight-driver" }
 sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight-driver" }
 kotlin-serilization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serilization-json" }
+kotlin-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlin-date-time" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

@@ -19,17 +19,16 @@ enum LevelsEvents {
 }
 
 class LevelsViewModel: ObservableObject {
-    
     @Published public private(set) var state: LevelsState
     
     private let gameLevelsService: GamesLevelsService
-    private let userProfileService: UserProfileService
+    private let userProfileService: IUserProfileService
     private let paginationService: PaginationService
     
     init(
         state: LevelsState = .init(),
         gameLevelsService: GamesLevelsService = ServicesLocatorKt.gamesLevelsService(),
-        userProfileService: UserProfileService = ServicesLocatorKt.userProfileService(),
+        userProfileService: IUserProfileService = ServicesLocatorKt.userProfileService(),
         paginationService: PaginationService = ServicesLocatorKt.paginationService()
     ) {
         self.state = state
@@ -76,14 +75,13 @@ class LevelsViewModel: ObservableObject {
             }
             
             async let playingPageResp = gameLevelsService.getLevelsPlayingPage()
-            async let playingRowIdResp = gameLevelsService.getPlayingRowId()
             async let livesResp = userProfileService.getLives()
             async let appWasOpenedResp = userProfileService.appWasOpenedBefore()
             
             let playingPage = try await (playingPageResp)
-            let playingRowId = try await (playingRowIdResp)
             let lives = try await (livesResp)
             let appWasOpened = try await (appWasOpenedResp)
+            let playingRowId = playingPage.playingRowId
             
             await MainActor.run {
                 state.games = playingPage.games
@@ -97,10 +95,10 @@ class LevelsViewModel: ObservableObject {
                     pageState: playingPage.pageState
                 )
                 state.fetchedPages = [Int(playingPage.page)]
-                state.playingRowId = Int(truncating: playingRowId)
+                state.playingRowId = Int(playingRowId)
                 state.playingRowIdx = Int(gameLevelsService.getIndexOfRowId(
                     games: playingPage.games,
-                    rowId: Int32(truncating: playingRowId)
+                    rowId: Int32(playingRowId)
                 ))
                 state.playingRowIsShowing = true
                 state.lives = Int(truncating: lives)

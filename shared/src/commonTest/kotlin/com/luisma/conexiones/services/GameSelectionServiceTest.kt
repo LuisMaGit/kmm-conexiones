@@ -5,6 +5,8 @@ import com.luisma.conexiones.models.game.GameDistribution
 import com.luisma.conexiones.models.game.GameDistributionCoordinates
 import com.luisma.conexiones.services.game.GameSelectionService
 import com.luisma.conexiones.services.game.GameSelectionSubmitResponse
+import com.luisma.conexiones.services.game.IGameAnimationService
+import com.luisma.conexiones.services.mocks.gameAnimationMockService
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -12,9 +14,11 @@ class GameSelectionServiceTest {
 
     private fun getService(
         columns: Int = GAME_WORD_AMOUNT,
+        gameAnimationService: IGameAnimationService = gameAnimationMockService()
     ): GameSelectionService {
         return GameSelectionService(
-            columns = columns
+            columns = columns,
+            gameAnimationService = gameAnimationService
         )
     }
 

@@ -12,6 +12,6 @@ fun GameViewBuilder(gameId: Int) {
     GameView(
         gameId = gameId,
         state = gameState,
-        sendEvent = { event -> gameViewModel.sendEvent(event = event) }
+        sendEvent = { event -> gameViewModel.sendEvent(event) }
     )
 }

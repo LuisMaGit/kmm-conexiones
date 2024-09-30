@@ -9,6 +9,9 @@ sealed class Routes(
     val payloadName: String? = null
 ) {
     data object Back : Routes(routeName = "back")
+    data object BackWithRefresh : Routes(
+        routeName = "back_with_refresh"
+    )
 
     data object Levels : Routes(routeName = "levels")
 
@@ -27,11 +30,7 @@ object RouterService {
     private val _router = MutableSharedFlow<RoutePayload>()
     val router: SharedFlow<RoutePayload> = _router
 
-    suspend fun goTo(route: RoutePayload) {
+    suspend fun setRoute(route: RoutePayload) {
         _router.emit(route)
-    }
-
-    suspend fun goBack() {
-        _router.emit(RoutePayload(route = Routes.Back))
     }
 }
