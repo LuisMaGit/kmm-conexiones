@@ -1,26 +1,32 @@
 package com.luisma.conexiones.services.game
 
-import com.luisma.conexiones.models.game.GameAnimationType
-import com.luisma.conexiones.models.game.GameDistributionCoordinates
 import com.luisma.conexiones.models.game.GameGridRowState
+import com.luisma.conexiones.models.game.GameTileAnimationType
+import com.luisma.conexiones.models.game.GameWordAnimationType
 
 
 interface IGameAnimationService {
-    fun toggleAnimation(
+    fun toggleWordAnimation(
         gridRowState: Map<Int, GameGridRowState>,
         column: Int,
         row: Int,
-        animationType: GameAnimationType
+        animationType: GameWordAnimationType
+    ): Map<Int, GameGridRowState>
+
+    fun toggleTilesAnimation(
+        gridRowState: Map<Int, GameGridRowState>,
+        rows: List<Int>,
+        animationType: GameTileAnimationType
     ): Map<Int, GameGridRowState>
 }
 
 class GameAnimationService : IGameAnimationService {
 
-    override fun toggleAnimation(
+    override fun toggleWordAnimation(
         gridRowState: Map<Int, GameGridRowState>,
         column: Int,
         row: Int,
-        animationType: GameAnimationType,
+        animationType: GameWordAnimationType,
     ): Map<Int, GameGridRowState> {
         val output = mutableMapOf<Int, GameGridRowState>()
 
@@ -39,6 +45,24 @@ class GameAnimationService : IGameAnimationService {
             output[mapEntry.key] = mapEntry.value.copy(
                 distribution = newDistribution
             )
+        }
+
+        return output
+    }
+
+    override fun toggleTilesAnimation(
+        gridRowState: Map<Int, GameGridRowState>,
+        rows: List<Int>,
+        animationType: GameTileAnimationType
+    ): Map<Int, GameGridRowState> {
+        val output = mutableMapOf<Int, GameGridRowState>()
+        gridRowState.forEach { grid ->
+            val row = rows.firstOrNull { r -> r == grid.key }
+            if (row != null) {
+                output[grid.key] = grid.value.copy(tileAnimationType = animationType)
+            } else {
+                output[grid.key] = grid.value
+            }
         }
 
         return output

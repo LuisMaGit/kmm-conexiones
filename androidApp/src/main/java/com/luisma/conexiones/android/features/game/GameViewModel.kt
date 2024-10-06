@@ -8,8 +8,9 @@ import com.luisma.conexiones.android.router.RoutePayload
 import com.luisma.conexiones.android.router.RouterService
 import com.luisma.conexiones.android.router.Routes
 import com.luisma.conexiones.models.BasicScreenState
-import com.luisma.conexiones.models.game.GameAnimationType
 import com.luisma.conexiones.models.game.GameState
+import com.luisma.conexiones.models.game.GameTileAnimationType
+import com.luisma.conexiones.models.game.GameWordAnimationType
 import com.luisma.conexiones.services.INumbUtilsService
 import com.luisma.conexiones.services.IUserProfileService
 import com.luisma.conexiones.services.game.GamePlayService
@@ -57,7 +58,13 @@ class GameViewModel(
         when (event) {
             is GameViewEvents.OnCreate -> onCrate(gameId = event.gameId)
             is GameViewEvents.SelectWord -> selectWord(col = event.col, row = event.row)
-            is GameViewEvents.DismissAnimation -> dismissAnimation(col = event.col, row = event.row)
+            is GameViewEvents.DismissWordAnimation -> dismissWordAnimation(
+                col = event.col,
+                row = event.row
+            )
+            is GameViewEvents.DismissTileAnimation -> dismissTileAnimation(row = event.row)
+            is GameViewEvents.DismissLivesAnimation -> dismissLivesAnimation()
+            is GameViewEvents.DismissDoneSignAnimation -> dismissDoneSignAnimation()
             is GameViewEvents.GoToNextLevel -> goToNextLevel(nextLevelId = event.nextLevelId)
             GameViewEvents.MixGame -> mixGame()
             GameViewEvents.ClearSelection -> clearSelection()
@@ -88,7 +95,9 @@ class GameViewModel(
                     gridRowsState = game.gridRowsState,
                     lives = lives,
                     livesEarnedOnDone = game.livesEarnedOnDone,
-                    nextGameId = game.nextGameId
+                    nextGameId = game.nextGameId,
+                    showOnDoneSignAnimation = game.showOnDoneSignAnimation,
+                    showOnDoneLivesAnimation = game.showOnDoneLivesAnimation
                 )
             }
         }
@@ -157,22 +166,6 @@ class GameViewModel(
         }
     }
 
-    private fun dismissAnimation(
-        col: Int,
-        row: Int,
-    ) {
-        val resp = gameAnimationService.toggleAnimation(
-            gridRowState = _state.value.gridRowsState,
-            column = col,
-            row = row,
-            animationType = GameAnimationType.NoAnimation
-        )
-        _state.update {
-            it.copy(
-                gridRowsState = resp
-            )
-        }
-    }
 
     private fun submit() {
         viewModelScope.launch {
@@ -185,22 +178,23 @@ class GameViewModel(
             var livesEarnedOnDone = _state.value.livesEarnedOnDone
             var lives = _state.value.lives
 
-            if (response.gamePlaying.gameData.gameState == GameState.Win ||
-                response.gamePlaying.gameData.gameState == GameState.Lost
+            if (response.gameData.gameState == GameState.Win ||
+                response.gameData.gameState == GameState.Lost
             ) {
-                livesEarnedOnDone = response.gamePlaying.livesEarnedOnDone
+                livesEarnedOnDone = response.livesEarnedOnDone
                 lives = response.totalLivesAfterOnDone
             }
 
             _state.update {
                 it.copy(
-                    gameData = response.gamePlaying.gameData,
-                    gridRowsState = response.gamePlaying.gridRowsState,
-                    currentSelection = response.gamePlaying.selection,
+                    gameData = response.gameData,
+                    gridRowsState = response.gridRowsState,
+                    currentSelection = response.selection,
                     selectFailed = !response.rowGuessedOnSubmit,
                     livesEarnedOnDone = livesEarnedOnDone,
                     lives = lives,
-                    nextGameId = response.gamePlaying.nextGameId
+                    nextGameId = response.nextGameId,
+                    notSolvedRowsOnLost = response.notSolvedRowsOnLost,
                 )
             }
         }
@@ -212,6 +206,54 @@ class GameViewModel(
         }
 
         startGame(gameId = nextLevelId)
+    }
+
+    private fun dismissWordAnimation(
+        col: Int,
+        row: Int,
+    ) {
+        val resp = gameAnimationService.toggleWordAnimation(
+            gridRowState = _state.value.gridRowsState,
+            column = col,
+            row = row,
+            animationType = GameWordAnimationType.NoAnimation
+        )
+        _state.update {
+            it.copy(
+                gridRowsState = resp
+            )
+        }
+    }
+
+    private fun dismissTileAnimation(
+        row: Int,
+    ) {
+        val resp = gameAnimationService.toggleTilesAnimation(
+            gridRowState = _state.value.gridRowsState,
+            rows = listOf(row),
+            animationType = GameTileAnimationType.NoAnimation
+        )
+        _state.update {
+            it.copy(
+                gridRowsState = resp
+            )
+        }
+    }
+
+
+    private fun dismissLivesAnimation() {
+        if(!_state.value.showOnDoneLivesAnimation) return
+
+        _state.update {
+            it.copy(showOnDoneLivesAnimation = false)
+        }
+    }
+    private fun dismissDoneSignAnimation() {
+        if(!_state.value.showOnDoneSignAnimation) return
+
+        _state.update {
+            it.copy(showOnDoneSignAnimation = false)
+        }
     }
 
 }

@@ -41,8 +41,8 @@ class StatsService(
         )
 
         val distribution = mutableListOf<Int>()
-        repeat(GAME_AMOUNT_TRIES) {
-            val amountTries = dbService.selectGuessedTriesCount(guessedTries = it + 1)
+        for (tr in 0 ..< 4 ) {
+            val amountTries = dbService.selectGuessedTriesCount(guessedTries = tr)
             distribution.add(amountTries)
         }
         val maxDistribution = distribution.max()

@@ -62,6 +62,7 @@ fun gamePlayService(): GamePlayService {
         gameSelectionService = gameSelectionService(),
         userProfileService = userProfileService(),
         userProfileDBService = userProfileDBService(),
+        gameAnimationService = gameAnimationService()
     )
 }
 

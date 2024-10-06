@@ -22,7 +22,6 @@ fun CTryChip(
     modifier: Modifier = Modifier
 ) {
 
-
     Box(
         modifier = modifier
             .size(17.dp)

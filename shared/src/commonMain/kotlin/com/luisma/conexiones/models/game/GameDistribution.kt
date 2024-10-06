@@ -22,10 +22,6 @@ data class GameDistributionCoordinates(
     @SerialName("row")
     val row: Int,
     @Transient
-    val animationType: GameAnimationType = GameAnimationType.NoAnimation
+    val animationType: GameWordAnimationType = GameWordAnimationType.NoAnimation
 )
 
-enum class GameAnimationType {
-    NoAnimation,
-    Scale
-}

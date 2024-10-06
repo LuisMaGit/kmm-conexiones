@@ -22,11 +22,6 @@ import com.luisma.conexiones.android.core_ui.components.CText
 import com.luisma.conexiones.android.core_ui.theme.CTheme
 import com.luisma.conexiones.android.core_ui.theme.cBorderRadius4
 
-enum class WordCardAnimationType {
-    NoAnimation,
-    Scale
-}
-
 @Composable
 fun WordCard(
     modifier: Modifier = Modifier,
@@ -46,7 +41,6 @@ fun WordCard(
     val scaleAnimation = remember {
         Animatable(1f)
     }
-
     LaunchedEffect(key1 = triggerScale) {
         if (triggerScale) {
             val result = scaleAnimation.animateTo(
@@ -63,12 +57,36 @@ fun WordCard(
         }
     }
 
+    // animation horizontal move
+    val translationXAnimation = remember {
+        Animatable(0f)
+    }
+    val triggerXMove = animationType == WordCardAnimationType.TranslateX
+    LaunchedEffect(key1 = triggerXMove) {
+        if (triggerXMove) {
+            val result = translationXAnimation.animateTo(
+                targetValue = 0f,
+                animationSpec = keyframes {
+                    durationMillis = 250
+                    -20f at 50
+                    20f at 100
+                    -20f at 150
+                    20f at 200
+                },
+            )
+            if (result.endReason == AnimationEndReason.Finished) {
+                dismissAnimation(column, row)
+            }
+        }
+    }
+
     // theme
     val color = CTheme.colors
     val baseModifier = Modifier
         .graphicsLayer {
             scaleX = if (triggerScale) scaleAnimation.value else 1f
             scaleY = if (triggerScale) scaleAnimation.value else 1f
+            translationX = translationXAnimation.value
         }
         .size(
             width = if (triggerScale) sizeType.wordCardWidth * scaleAnimation.value else sizeType.wordCardWidth,
@@ -108,45 +126,8 @@ fun WordCard(
     }
 }
 
-//@Preview
-//@Composable
-//private fun WordCardPrev() {
-//    CThemeProvider {
-//        Column {
-//            WordCard(
-//                text = "CAT",
-//                selected = false,
-//                onTap = { _, _ -> },
-//                column = 0,
-//                row = 0
-//            )
-//            Box(modifier = Modifier.size(40.dp))
-//            WordCard(
-//                text = "SUPER CAT",
-//                selected = true,
-//                onTap = { _, _ -> },
-//                column = 0,
-//                row = 0
-//            )
-//            Box(modifier = Modifier.size(40.dp))
-//            WordCard(
-//                text = "CAT",
-//                sizeType = GameCardsContracts.Tablet,
-//                selected = false,
-//                onTap = { _, _ -> },
-//                column = 0,
-//                row = 0
-//            )
-//            Box(modifier = Modifier.size(40.dp))
-//            WordCard(
-//                text = "SUPER CAT",
-//                sizeType = GameCardsContracts.Tablet,
-//                selected = true,
-//                onTap = { _, _ -> },
-//                column = 0,
-//                row = 0
-//            )
-//        }
-//
-//    }
-//}
+enum class WordCardAnimationType {
+    NoAnimation,
+    Scale,
+    TranslateX
+}

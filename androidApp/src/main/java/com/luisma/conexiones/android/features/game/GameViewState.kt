@@ -18,6 +18,9 @@ data class GameViewState(
     val selectFailed: Boolean,
     val livesEarnedOnDone: Int,
     val nextGameId: Int,
+    val notSolvedRowsOnLost: Map<Int, Int>,
+    val showOnDoneSignAnimation: Boolean,
+    val showOnDoneLivesAnimation: Boolean,
 ) {
     companion object {
         fun initial(): GameViewState {
@@ -31,6 +34,9 @@ data class GameViewState(
                 nextGameId = -1,
                 lives = 0,
                 selectFailed = false,
+                notSolvedRowsOnLost = emptyMap(),
+                showOnDoneSignAnimation = false,
+                showOnDoneLivesAnimation = false
             )
         }
     }
@@ -49,5 +55,21 @@ data class GameViewState(
         get() = gameData.gameState == GameState.Playing
                 && !selectFailed
                 && currentSelection.count() == GAME_WORD_AMOUNT
+
+    val showButtonsOnDone: Boolean
+        get() {
+            val state = gameData.gameState
+            if ((state != GameState.Win && state != GameState.Lost) ||
+                nextGameId == -1
+            ) {
+                return false
+            }
+
+            return if (state == GameState.Win) {
+                !showOnDoneSignAnimation && !showOnDoneLivesAnimation
+            } else {
+                !showOnDoneSignAnimation
+            }
+        }
 
 }

@@ -1,7 +1,7 @@
 package com.luisma.conexiones.services.game
 
 import com.luisma.conexiones.contracts.GAME_WORD_AMOUNT
-import com.luisma.conexiones.models.game.GameAnimationType
+import com.luisma.conexiones.models.game.GameWordAnimationType
 import com.luisma.conexiones.models.game.GameDistribution
 import com.luisma.conexiones.models.game.GameDistributionCoordinates
 import com.luisma.conexiones.models.game.GameGridRowState
@@ -42,11 +42,11 @@ class GameSelectionService(
         )
 
         val newGridWithAnimation = if (addWord) {
-            gameAnimationService.toggleAnimation(
+            gameAnimationService.toggleWordAnimation(
                 gridRowState = newGrid,
                 column = newCoordinates.column,
                 row = newCoordinates.row,
-                animationType = GameAnimationType.Scale
+                animationType = GameWordAnimationType.Tap
             )
         } else {
             newGrid
@@ -106,7 +106,10 @@ class GameSelectionService(
         gridRowState.forEach { mapEntry ->
             val newDistribution = mapEntry.value.distribution.map { it }.toMutableList()
             mapEntry.value.distribution.forEachIndexed { idx, dist ->
-                val founded = newSelectedCoordinates.find { sel -> sel == dist.should }
+                val founded = newSelectedCoordinates.find { sel ->
+                    sel.row == dist.should.row &&
+                            sel.column == dist.should.column
+                }
                 if (!dist.selected && founded != null) {
                     newDistribution[idx] = newDistribution[idx].copy(selected = true)
                 } else if (dist.selected && founded == null) {
