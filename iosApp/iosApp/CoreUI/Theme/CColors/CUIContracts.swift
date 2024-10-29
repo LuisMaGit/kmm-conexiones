@@ -15,6 +15,7 @@ let cFontSize14 = 14.0
 let cFontSize16 = 16.0
 let cFontSize20 = 20.0
 let cFontSize32 = 32.0
+let cFontSize36 = 36.0
 let cFontSize64 = 64.0
 
 // border radius
@@ -25,7 +26,9 @@ let cBorderRadius8 = 8.0
 let cSpace4 = 4.0
 let cSpace8 = 8.0
 let cSpace16 = 16.0
+let cSpace24 = 16.0
 let cSpace32 = 32.0
+let cSpace40 = 40.0
 
 // sizes
 let cDefIconSize = 24.0

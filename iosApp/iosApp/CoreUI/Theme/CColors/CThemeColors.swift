@@ -18,7 +18,7 @@ public struct CThemeColors {
     public var screenBackground: Color {
         return CColorsHelper().getColorByTheme(
             lightOrAny: CColors.white2,
-            dark: CColors.black,
+            dark: CColors.grey,
             colorScheme: colorScheme
         )
     }

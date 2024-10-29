@@ -95,7 +95,10 @@ struct LevelsGrid: View {
                                             type: mapLevelCardType(state: game.gameState),
                                             level: String(game.id),
                                             livesReward: game.livesEarnedFormatted
-                                        )
+                                        ),
+                                        onTap: {
+                                            vm.sendEvent(event: .goToLevel(gameId: Int(game.id)))
+                                        }
                                     )
                                     .onAppear {
                                         if game.id == vm.state.playingRowId {

@@ -11,16 +11,22 @@ import SwiftUI
 struct Appbar: View {
     let showTutorial: Bool
     let lives: Int
-    let onTapLogo: () -> Void
+    let onTapLogo: (() -> Void)?
+    let onTapBack: (() -> Void)?
+    let leadingComponentType: AppBarLeadingComponentType
 
     init(
-        showTutorial: Bool,
+        showTutorial: Bool = false,
         lives: Int,
-        onTapLogo: @escaping () -> Void
+        onTapLogo: (() -> Void)? = nil,
+        onTapBack: (() -> Void)? = nil,
+        leadingComponentType: AppBarLeadingComponentType = .logo
     ) {
         self.showTutorial = showTutorial
         self.lives = lives
         self.onTapLogo = onTapLogo
+        self.onTapBack = onTapBack
+        self.leadingComponentType = leadingComponentType
     }
 
     @StateObject var vm: AppbarViewModel = .init()
@@ -41,11 +47,29 @@ struct Appbar: View {
 
         let livesToShow = vm.state.lives < 0 ? 0 : vm.state.lives
         HStack {
-            RippleButton(
-                transparent: false,
-                action: onTapLogo
-            ) {
-                CLogo()
+            switch leadingComponentType {
+            case .logo:
+                RippleButton(
+                    transparent: false,
+                    action: {
+                        if let onTap = onTapLogo {
+                            onTap()
+                        }
+                    }
+                ) {
+                    CLogo()
+                }
+            case .backArrow:
+                RippleButton(
+                    transparent: false,
+                    action: {
+                        if let onTap = onTapBack {
+                            onTap()
+                        }
+                    }
+                ) {
+                    CIcon(type: .arrowLeft)
+                }
             }
             Spacer()
             // tutorial
@@ -118,4 +142,9 @@ struct Appbar: View {
             }
         )
     }
+}
+
+enum AppBarLeadingComponentType {
+    case logo
+    case backArrow
 }

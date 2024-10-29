@@ -2,15 +2,16 @@ import shared
 import SwiftUI
 
 struct ContentView: View {
-    @State var value: Bool = false
+    @StateObject var router = Router.instance
 
     var body: some View {
-        Levels()
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+        switch router.route {
+        case .Levels:
+            Levels()
+        case .Game(let gameId):
+            GameView(gameId: gameId)
+        case .MockAdd:
+            MockAddView()
+        }
     }
 }

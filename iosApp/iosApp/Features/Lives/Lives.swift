@@ -87,7 +87,9 @@ struct Lives: View {
                 color: CColors.orange,
                 svg: .heartFilled,
                 key: "+1",
-                onTap: {}
+                onTap: {
+                    vm.watchAdd()
+                }
             )
         }
     }

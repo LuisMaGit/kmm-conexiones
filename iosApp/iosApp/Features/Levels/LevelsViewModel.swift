@@ -9,21 +9,13 @@
 import Foundation
 import shared
 
-enum LevelsEvents {
-    case onAppear
-    case refreshScreen
-    case initialScrollDone
-    case previousPage
-    case nextPage
-    case onVisibilityChangePlayingCard(show: Bool)
-}
-
 class LevelsViewModel: ObservableObject {
     @Published public private(set) var state: LevelsState
     
     private let gameLevelsService: GamesLevelsService
     private let userProfileService: IUserProfileService
     private let paginationService: PaginationService
+    private let router = Router.instance
     
     init(
         state: LevelsState = .init(),
@@ -51,6 +43,8 @@ class LevelsViewModel: ObservableObject {
             nextPage()
         case .onVisibilityChangePlayingCard(show: let show):
             onVisibilityChangePlayingCard(show: show)
+        case .goToLevel(gameId: let gameId):
+            goToLevel(gameId: gameId)
         }
     }
     
@@ -171,6 +165,20 @@ class LevelsViewModel: ObservableObject {
                     rowId: Int32(state.playingRowId)
                 ))
             }
+        }
+    }
+    
+    private func goToLevel(gameId: Int) {
+        Task {
+            let canGo = gameLevelsService.canGoToLevel(
+                games: state.games,
+                lives: Int32(state.lives),
+                gameId: Int32(gameId)
+            )
+            if !canGo {
+                return
+            }
+            await router.goTo(page: .Game(gameId: gameId))
         }
     }
 }

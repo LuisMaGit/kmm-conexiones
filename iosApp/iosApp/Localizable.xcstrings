@@ -285,7 +285,7 @@
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Errores restantes"
+            "value" : "Errores restantes:"
           }
         }
       }
@@ -312,35 +312,13 @@
         }
       }
     },
-    "level_next_level" : {
+    "level_title %d" : {
       "extractionState" : "manual",
       "localizations" : {
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nivel %1$d"
-          }
-        }
-      }
-    },
-    "level_submit_tries_alert" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Te faltan %1$d palabras por seleccionar"
-          }
-        }
-      }
-    },
-    "level_title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nivel %1$d"
+            "value" : "Nivel %d"
           }
         }
       }
@@ -451,6 +429,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Te has quedado sin vidas"
+          }
+        }
+      }
+    },
+    "reusable_level %d" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nivel %d"
           }
         }
       }

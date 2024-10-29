@@ -37,13 +37,16 @@ enum LevelCardType {
 struct LevelCard: View {
     let isLoading: Bool
     let cardData: LevelCardData
+    let onTap: (() -> Void)?
 
     init(
         isLoading: Bool = false,
-        cardData: LevelCardData
+        cardData: LevelCardData,
+        onTap: (() -> Void)? = nil
     ) {
         self.isLoading = isLoading
         self.cardData = cardData
+        self.onTap = onTap
     }
 
     @Environment(\.colorScheme) var colorScheme
@@ -60,7 +63,11 @@ struct LevelCard: View {
         } else {
             RippleButton(
                 transparent: false,
-                action: {},
+                action: {
+                    if onTap != nil {
+                        onTap!()
+                    }
+                },
                 content: {
                     ZStack(
                         alignment: .center

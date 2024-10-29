@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.ui.Modifier
 import com.luisma.conexiones.android.core_ui.theme.CTheme
 import com.luisma.conexiones.android.core_ui.theme.CThemeProvider
+import com.luisma.conexiones.android.features.game.GameViewBuilder
 import com.luisma.conexiones.android.router.Router
 import com.luisma.conexiones.android.router.RouterService
 

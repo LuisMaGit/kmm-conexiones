@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+
+
 public struct CText: View {
     let key: LocalizedStringKey?
     let text: String?

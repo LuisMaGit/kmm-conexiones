@@ -14,6 +14,7 @@ struct CButton: View {
     let svg: CSVGType
     let key: LocalizedStringKey
     let onTap: () -> Void
+    let disabled: Bool
 
     let iconSize = 12.0
     let offsetBackBox = 5.0
@@ -24,12 +25,14 @@ struct CButton: View {
         width: CGFloat? = nil,
         svg: CSVGType = .question,
         key: LocalizedStringKey = "",
+        disabled: Bool = false,
         onTap: @escaping () -> Void
     ) {
         self.color = color
         self.width = width
         self.svg = svg
         self.key = key
+        self.disabled = disabled
         self.onTap = onTap
     }
 
@@ -44,8 +47,12 @@ struct CButton: View {
                     frontRect(width: geo.size.width - 2)
                         .offset(x: 1)
                 }
-                content()
-                    .offset(y: -2)
+                if !disabled {
+                    content()
+                        .offset(y: -2)
+                } else {
+                    content()
+                }
             }
             .frame(
                 width: width,
@@ -59,47 +66,71 @@ struct CButton: View {
             CIcon(
                 type: svg,
                 width: iconSize,
-                height: iconSize
+                height: iconSize,
+                color: CColors.black
             )
-            CText(key: key, fixedFont: true)
+            CText(
+                key: key,
+                color: CColors.black,
+                fixedFont: true
+            )
         }
     }
 
     @ViewBuilder func backRect() -> some View {
-        RoundedRectangle(
-            cornerRadius: cBorderRadius4
-        )
-        .fill(CColors.black)
-        .frame(
-            width: width,
-            height: heightBox + offsetBackBox
-        )
+        if !disabled {
+            RoundedRectangle(
+                cornerRadius: cBorderRadius4
+            )
+            .fill(CColors.black)
+            .frame(
+                width: width,
+                height: heightBox + offsetBackBox
+            )
+        }
     }
 
     @ViewBuilder func frontRect(width: Double) -> some View {
+        if !disabled {
+            frontRectWithoutBorder(width: width, height: heightBox)
+                .background(
+                    RoundedRectangle(
+                        cornerRadius: cBorderRadius4,
+                        style: .continuous
+                    )
+                    .stroke(CColors.black, lineWidth: 2)
+                )
+        } else {
+            frontRectWithoutBorder(width: width, height: heightBox + offsetBackBox)
+        }
+    }
+
+    @ViewBuilder func frontRectWithoutBorder(width: Double, height: Double) -> some View {
         RoundedRectangle(
             cornerRadius: cBorderRadius4
         )
         .fill(color)
-        .background(
-            RoundedRectangle(
-                cornerRadius: cBorderRadius4,
-                style: .continuous
-            )
-            .stroke(CColors.black, lineWidth: 2)
-        )
         .frame(
             width: width,
-            height: heightBox
+            height: height
         )
     }
 }
 
 #Preview {
-    CButton(
-        width: 300,
-        svg: .broom,
-        key: "Clear",
-        onTap: {}
-    )
+    VStack {
+        CButton(
+            width: 100,
+            svg: .broom,
+            key: "Enabled",
+            onTap: {}
+        )
+        CButton(
+            width: 100,
+            svg: .broom,
+            key: "Disabled",
+            disabled: true,
+            onTap: {}
+        )
+    }
 }

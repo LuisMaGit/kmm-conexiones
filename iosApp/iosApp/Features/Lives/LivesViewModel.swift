@@ -15,6 +15,7 @@ class LivesViewModel: ObservableObject {
     @Published public private(set) var state: LivesState
 
     private let userProfileService: IUserProfileService
+    private let router = Router.instance
 
     init(
         state: LivesState = .init(),
@@ -32,6 +33,12 @@ class LivesViewModel: ObservableObject {
                 state.lives = Int(truncating: lives)
                 state.screenState = .success
             }
+        }
+    }
+    
+    func watchAdd() {
+        Task {
+            await router.goTo(page: .MockAdd)
         }
     }
 }

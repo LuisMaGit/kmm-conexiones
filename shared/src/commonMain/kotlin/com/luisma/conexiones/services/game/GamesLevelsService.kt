@@ -60,12 +60,12 @@ class GamesLevelsService(
         lives: Int,
         gameId: Int,
     ): Boolean {
-        if (lives > 0) {
-            return true
+        if (lives <= 0) {
+            return false
         }
 
         val game = games.first { it.id == gameId }
-        return game.gameState == GameState.Win || game.gameState == GameState.Lost
+        return game.gameState != GameState.Lock
     }
 }
 

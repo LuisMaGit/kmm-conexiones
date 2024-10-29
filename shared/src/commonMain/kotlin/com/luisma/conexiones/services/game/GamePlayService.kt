@@ -174,6 +174,7 @@ class GamePlayService(
         val gameData = getGameData(gameId = gameId)
         var grid = gameSortService.resolveGridRowState(gameData)
         val notSolvedRowsOnLost = mutableMapOf<Int, Int>()
+        var notSolvedRowsOnLostIdx = emptyList<Int>()
         // keep selection in not guessed
         if (rowGuessed == -1 && gameData.gameState == GameState.Playing) {
             grid = gameSelectionService.updateSelection(
@@ -206,8 +207,9 @@ class GamePlayService(
                     notSolvedCounter++
                 }
             }
+            notSolvedRowsOnLostIdx = notSolvedRowsOnLost.keys.sorted()
             grid = gameAnimationService.toggleTilesAnimation(
-                rows = notSolvedRowsOnLost.keys.toList(),
+                rows = notSolvedRowsOnLostIdx,
                 animationType = GameTileAnimationType.Reveal,
                 gridRowState = grid
             )
@@ -244,6 +246,7 @@ class GamePlayService(
             rowGuessedOnSubmit = rowGuessed != -1,
             totalLivesAfterOnDone = totalLivesAfterOnDone,
             notSolvedRowsOnLost = notSolvedRowsOnLost,
+            notSolvedRowsOnLostIdx = notSolvedRowsOnLostIdx
         )
     }
 }
@@ -272,5 +275,6 @@ data class GamePlayingSubmitResponse(
     val nextGameId: Int,
     val rowGuessedOnSubmit: Boolean,
     val totalLivesAfterOnDone: Int,
+    val notSolvedRowsOnLostIdx: List<Int>,
     val notSolvedRowsOnLost: Map<Int, Int>,
 )

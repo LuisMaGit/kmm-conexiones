@@ -57,6 +57,7 @@ struct TutorialErrorRow: View {
 
     var body: some View {
         let background = CThemeColors(colorScheme: colorScheme).screenBackground
+        let heartSize = 16.0
         HStack(
             spacing: 0
         ) {
@@ -104,13 +105,14 @@ struct TutorialErrorRow: View {
                     ) { _ in
                         CIcon(
                             type: .heartFilled16px,
-                            width: 16,
-                            height: 16
+                            width: heartSize,
+                            height: heartSize
                         )
+                        .padding([.trailing], cSpace4)
                     }
                 }
             }
-            .frame(width: 50)
+            .frame(width: 60)
             Spacer()
         }
     }
