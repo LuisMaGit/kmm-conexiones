@@ -59,7 +59,7 @@ fun GuessedCard(
                 animationSpec = keyframes {
                     delayMillis = animationDelay
                     durationMillis = GUESSED_CARD_ANIMATION_DURATION
-                    1.5f at 250 using FastOutSlowInEasing
+                    1.5f at 250 with FastOutSlowInEasing
                 }
             )
 

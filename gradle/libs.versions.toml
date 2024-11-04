@@ -11,6 +11,9 @@ sqldelight-driver = "2.0.0"
 kotlin-serilization = "2.0.0"
 kotlin-serilization-json = "1.6.3"
 kotlin-date-time = "0.6.1"
+add-mob = "23.3.0"
+google-services = "4.4.2"
+firebase-bom = "33.5.1"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -27,6 +30,9 @@ sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", ver
 sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight-driver" }
 kotlin-serilization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serilization-json" }
 kotlin-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlin-date-time" }
+google-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "add-mob" }
+firebase-core = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
+firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -36,3 +42,4 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = "kotlin" }
 sqlDelight = { id = "app.cash.sqldelight", version.ref = "sqldelight-driver" }
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin-serilization" }
+googleServices = { id = "com.google.gms.google-services", version.ref = "google-services" }

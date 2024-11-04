@@ -6,7 +6,8 @@ import com.luisma.conexiones.models.BasicScreenState
 data class LivesState(
     val lives: Int,
     val initialized: Boolean,
-    val screenState: BasicScreenState
+    val screenState: BasicScreenState,
+    val enabledLivesButton: Boolean,
 ) {
 
     val hasLife: Boolean
@@ -17,7 +18,8 @@ data class LivesState(
             return LivesState(
                 lives = 0,
                 initialized = false,
-                screenState = BasicScreenState.Loading
+                screenState = BasicScreenState.Loading,
+                enabledLivesButton = false,
             )
         }
     }

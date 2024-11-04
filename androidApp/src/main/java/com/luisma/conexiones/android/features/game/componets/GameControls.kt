@@ -10,10 +10,8 @@ import androidx.compose.ui.res.stringResource
 import com.luisma.conexiones.android.R
 import com.luisma.conexiones.android.core_ui.components.CButton
 import com.luisma.conexiones.android.core_ui.theme.CColor
-import com.luisma.conexiones.android.core_ui.theme.CTheme
 import com.luisma.conexiones.android.core_ui.theme.cSpace16
 import com.luisma.conexiones.android.core_ui.theme.cSpace4
-import com.luisma.conexiones.android.core_ui.theme.cSpace8
 import com.luisma.conexiones.android.features.game.GameViewEvents
 
 @Composable
@@ -23,7 +21,6 @@ fun GameControls(
     canDeselectWords: Boolean,
     canSendRow: Boolean
 ) {
-    val color = CTheme.colors
     Column(
         modifier = modifier
     ) {

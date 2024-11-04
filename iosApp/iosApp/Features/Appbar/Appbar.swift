@@ -32,6 +32,7 @@ struct Appbar: View {
     @StateObject var vm: AppbarViewModel = .init()
 
     var body: some View {
+        let sizeIcon = 24.0
         let showTutorialBinding: Binding<Bool> = Binding(
             get: { vm.state.showTutorial },
             set: { _ in }
@@ -57,7 +58,7 @@ struct Appbar: View {
                         }
                     }
                 ) {
-                    CLogo()
+                    CLogo(size: sizeIcon)
                 }
             case .backArrow:
                 RippleButton(
@@ -68,7 +69,10 @@ struct Appbar: View {
                         }
                     }
                 ) {
-                    CIcon(type: .arrowLeft)
+                    CIcon(
+                        type: .arrowLeft,
+                        height: sizeIcon
+                    )
                 }
             }
             Spacer()

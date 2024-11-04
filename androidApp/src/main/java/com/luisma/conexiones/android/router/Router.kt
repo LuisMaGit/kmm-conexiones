@@ -39,6 +39,7 @@ fun Router(
                         )
                         navController.popBackStack()
                     }
+
                 }
             }
         }
@@ -60,5 +61,6 @@ fun Router(
             val gameId = backStackEntry.arguments?.getString(Routes.Game.payloadName)
             GameViewBuilder(gameId = gameId?.toInt() ?: 0)
         }
+
     }
 }

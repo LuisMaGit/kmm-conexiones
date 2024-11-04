@@ -81,7 +81,7 @@ private fun DoneLive(
                 animationSpec = keyframes {
                     delayMillis = live * GUESSED_CARD_ANIMATION_DURATION
                     durationMillis = GUESSED_CARD_ANIMATION_DURATION
-                    1.2f at GUESSED_CARD_ANIMATION_DURATION / 2 using FastOutSlowInEasing
+                    1.2f at GUESSED_CARD_ANIMATION_DURATION / 2 with FastOutSlowInEasing
                 }
             )
 

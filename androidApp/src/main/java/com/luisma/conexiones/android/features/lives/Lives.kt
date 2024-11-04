@@ -12,7 +12,8 @@ import com.luisma.conexiones.models.BasicScreenState
 @Composable
 fun Lives(
     state: LivesState,
-    sendEvent: (event: LivesEvents) -> Unit
+    sendEvent: (event: LivesEvents) -> Unit,
+    onDismiss: () -> Unit,
 ) {
 
     LaunchedEffect(key1 = Unit) {
@@ -28,7 +29,8 @@ fun Lives(
     if (state.screenState == BasicScreenState.Success) {
         LivesContent(
             state = state,
-            sendEvent = { sendEvent(it) }
+            sendEvent = { sendEvent(it) },
+            onDismiss = onDismiss,
         )
     } else if (state.screenState == BasicScreenState.Loading) {
         CBottomSheetLoader()
@@ -37,9 +39,9 @@ fun Lives(
 
 @Composable
 fun LivesBottomSheet(
-    onDismiss: () -> Unit,
     state: LivesState,
-    sendEvent: (event: LivesEvents) -> Unit
+    sendEvent: (event: LivesEvents) -> Unit,
+    onDismiss: () -> Unit
 ) {
 
     CBottomSheet(
@@ -49,11 +51,12 @@ fun LivesBottomSheet(
             stringResource(id = R.string.lives_no_lives_title)
         },
         show = true,
-        onDismiss = { onDismiss() }
+        onDismiss = onDismiss
     ) {
         Lives(
             state = state,
-            sendEvent = { sendEvent(it) }
+            sendEvent = { sendEvent(it) },
+            onDismiss = onDismiss
         )
     }
 

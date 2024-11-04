@@ -8,6 +8,7 @@ import com.luisma.conexiones.android.features.app_bar.AppBarLeadingComponentType
 @Composable
 fun GameWrapper(
     onBack: () -> Unit,
+    onDismissLives: () -> Unit,
     lives: Int,
     content: @Composable () -> Unit
 ) {
@@ -15,7 +16,8 @@ fun GameWrapper(
         AppBarBuilder(
             onBack = onBack,
             lives = lives,
-            leadingComponentType = AppBarLeadingComponentType.BackArrow
+            leadingComponentType = AppBarLeadingComponentType.BackArrow,
+            onDismissLives = onDismissLives
         )
         content()
     }

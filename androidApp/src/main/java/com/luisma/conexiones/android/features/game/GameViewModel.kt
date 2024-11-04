@@ -57,11 +57,13 @@ class GameViewModel(
     fun sendEvent(event: GameViewEvents) {
         when (event) {
             is GameViewEvents.OnCreate -> onCrate(gameId = event.gameId)
+            is GameViewEvents.Refresh -> startGame(gameId = event.gameId)
             is GameViewEvents.SelectWord -> selectWord(col = event.col, row = event.row)
             is GameViewEvents.DismissWordAnimation -> dismissWordAnimation(
                 col = event.col,
                 row = event.row
             )
+
             is GameViewEvents.DismissTileAnimation -> dismissTileAnimation(row = event.row)
             is GameViewEvents.DismissLivesAnimation -> dismissLivesAnimation()
             is GameViewEvents.DismissDoneSignAnimation -> dismissDoneSignAnimation()
@@ -70,12 +72,13 @@ class GameViewModel(
             GameViewEvents.ClearSelection -> clearSelection()
             GameViewEvents.OnBack -> onBack()
             GameViewEvents.Submit -> submit()
-            GameViewEvents.MoreLives -> {}// TODO:
+            GameViewEvents.EnableLivesButton -> enableLivesButton()
+            GameViewEvents.OnAddWatched -> onAddWatched()
         }
     }
 
     private fun onCrate(gameId: Int) {
-        if (gameId == _state.value.gameId || gameId == -1) {
+        if ((gameId == _state.value.gameId || gameId == -1)) {
             return
         }
         startGame(gameId = gameId)
@@ -242,17 +245,32 @@ class GameViewModel(
 
 
     private fun dismissLivesAnimation() {
-        if(!_state.value.showOnDoneLivesAnimation) return
+        if (!_state.value.showOnDoneLivesAnimation) return
 
         _state.update {
             it.copy(showOnDoneLivesAnimation = false)
         }
     }
+
     private fun dismissDoneSignAnimation() {
-        if(!_state.value.showOnDoneSignAnimation) return
+        if (!_state.value.showOnDoneSignAnimation) return
 
         _state.update {
             it.copy(showOnDoneSignAnimation = false)
+        }
+    }
+
+    private fun onAddWatched() {
+        viewModelScope.launch {
+            val lives = userProfileService.getLives()
+            userProfileService.updateLives(lives + 1)
+            startGame(gameId = _state.value.gameId)
+        }
+    }
+
+    private fun enableLivesButton() {
+        _state.update {
+            it.copy(enabledAddButton = true)
         }
     }
 

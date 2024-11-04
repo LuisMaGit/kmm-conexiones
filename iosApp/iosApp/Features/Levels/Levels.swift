@@ -12,26 +12,21 @@ import SwiftUI
 struct Levels: View {
     @StateObject var vm = LevelsViewModel()
 
-    @Environment(\.colorScheme) var colorScheme
-
     var body: some View {
-        ZStack {
-            CThemeColors(colorScheme: colorScheme).screenBackground
-            VStack {
-                Appbar(
-                    showTutorial: vm.state.openTutorial,
-                    lives: vm.state.lives,
-                    onTapLogo: { vm.sendEvent(event: .refreshScreen) }
-                )
-                switch vm.state.screenState {
-                case .loading:
-                    loader()
-                case .success:
-                    LevelsGrid()
-                        .environmentObject(vm)
-                default:
-                    ZStack {}
-                }
+        VStack {
+            Appbar(
+                showTutorial: vm.state.openTutorial,
+                lives: vm.state.lives,
+                onTapLogo: { vm.sendEvent(event: .refreshScreen) }
+            )
+            switch vm.state.screenState {
+            case .loading:
+                loader()
+            case .success:
+                LevelsGrid()
+                    .environmentObject(vm)
+            default:
+                ZStack {}
             }
         }
         .onAppear {

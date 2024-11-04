@@ -11,14 +11,23 @@ import SwiftUI
 
 struct MockAddView: View {
     @StateObject var vm = MockAddViewModel()
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
-        VStack {
-            CText(
-                text: "YOUR ARE WATCHING AN ADD,"
-            )
-            CText(
-                text: "IT WILL END IN: \(vm.addTime)s"
-            )
+        ZStack {
+            CThemeColors(colorScheme: colorScheme).screenBackground
+            VStack(
+                spacing: cSpace8
+            ) {
+                CText(
+                    text: "YOUR ARE WATCHING AN ADD,\nIT WILL END IN:",
+                    fontSize: cFontSize20
+                )
+                .multilineTextAlignment(.center)
+                CText(
+                    text: "\(vm.addTime)s",
+                    fontSize: cFontSize64
+                )
+            }
         }
     }
 }

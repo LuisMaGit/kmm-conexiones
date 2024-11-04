@@ -41,6 +41,8 @@ fun AppBar(
     openTutorial: Boolean = false
 ) {
 
+    val iconSize = 24.dp
+
     LaunchedEffect(key1 = lives) {
         if (openTutorial) {
             sendEvent(AppBarEvents.ToggleTutorial)
@@ -62,7 +64,8 @@ fun AppBar(
                         if (onBack != null) {
                             onBack()
                         }
-                    }
+                    },
+                    iconSize = iconSize
                 )
 
             AppBarLeadingComponentType.Logo -> CLogo(
@@ -71,7 +74,7 @@ fun AppBar(
                         onTapLogo()
                     }
                 },
-                size = 30.dp
+                size = iconSize
             )
         }
         Spacer(modifier = Modifier.weight(1f))

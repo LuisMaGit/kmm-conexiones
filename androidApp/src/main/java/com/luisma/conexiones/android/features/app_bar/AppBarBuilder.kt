@@ -17,7 +17,8 @@ fun AppBarBuilder(
     onTapLogo: (() -> Unit)? = null,
     onBack: (() -> Unit)? = null,
     openTutorial: Boolean = false,
-    onDismissTutorial: (() -> Unit)? = null
+    onDismissTutorial: (() -> Unit)? = null,
+    onDismissLives: (() -> Unit)? = null
 ) {
 
     val appBarViewModel = viewModel<AppBarViewModel>(factory = AppBarViewModel.Factory)
@@ -51,7 +52,12 @@ fun AppBarBuilder(
         LivesBottomSheet(
             sendEvent = { livesViewModel.sendEvent(it) },
             state = livesState,
-            onDismiss = { appBarViewModel.sendEvent(AppBarEvents.ToggleLives) }
+            onDismiss = {
+                if (onDismissLives != null) {
+                    onDismissLives()
+                }
+                appBarViewModel.sendEvent(AppBarEvents.ToggleLives)
+            }
         )
     }
 

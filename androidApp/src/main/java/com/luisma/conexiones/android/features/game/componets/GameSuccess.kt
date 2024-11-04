@@ -58,7 +58,8 @@ fun GameSuccess(
 
         GameWrapper(
             lives = state.lives,
-            onBack = { sendEvent(GameViewEvents.OnBack) }
+            onBack = { sendEvent(GameViewEvents.OnBack) },
+            onDismissLives = { sendEvent(GameViewEvents.Refresh(gameId = state.gameId)) }
         ) {
             Column(
                 modifier = Modifier
@@ -139,7 +140,9 @@ fun GameSuccess(
                             modifier = Modifier
                                 .width(width = gridWidth)
                                 .padding(top = cSpace40),
-                            onTapMoreLives = { sendEvent(GameViewEvents.MoreLives) }
+                            enabledLivesButton = state.enabledAddButton,
+                            onAdWatched = { sendEvent(GameViewEvents.OnAddWatched) },
+                            enableLivesButton = { sendEvent(GameViewEvents.EnableLivesButton) }
                         )
                     } else {
                         GameDoneButton(

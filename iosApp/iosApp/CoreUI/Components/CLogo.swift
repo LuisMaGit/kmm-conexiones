@@ -18,9 +18,16 @@ struct CLogo: View {
     }
     
     var body: some View {
-        Rectangle()
-            .fill(CColors.green)
-            .frame(width: size, height: size)
+        Image(
+            "svg_logo"
+        )
+        .resizable()
+        .aspectRatio(contentMode: .fit)
+        .clipShape(RoundedRectangle(cornerRadius: cBorderRadius4))
+        .frame(
+            width: size,
+            height: size
+        )
     }
 }
 

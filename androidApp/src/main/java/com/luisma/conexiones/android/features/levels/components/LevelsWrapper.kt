@@ -10,6 +10,7 @@ fun LevelsWrapper(
     lives: Int?,
     onTapLogo: () -> Unit,
     onDismissTutorial: () -> Unit,
+    onDismissLives: () -> Unit,
     openTutorial: Boolean,
     content: @Composable () -> Unit,
 ) {
@@ -19,7 +20,8 @@ fun LevelsWrapper(
             lives = lives,
             onTapLogo = onTapLogo,
             openTutorial = openTutorial,
-            onDismissTutorial = onDismissTutorial
+            onDismissTutorial = onDismissTutorial,
+            onDismissLives = onDismissLives
         )
         content()
     }

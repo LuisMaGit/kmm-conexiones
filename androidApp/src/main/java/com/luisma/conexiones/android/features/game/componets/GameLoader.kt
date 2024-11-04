@@ -14,7 +14,8 @@ fun GameLoader(
 ) {
     GameWrapper(
         onBack = onBack,
-        lives = lives
+        lives = lives,
+        onDismissLives = {}
     ) {
         Box(
             contentAlignment = Alignment.Center,

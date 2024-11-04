@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Conexiones</string>
     <!--    reusable-->
     <string name="reusable_bullet">•</string>
     <string name="reusable_equal">=</string>
     <string name="reusable_level">Nivel</string>
+    <string name="reusable_loading_add">Cargando video...</string>
     <!--    levels-->
     <string name="levels_card_win">Ganaste</string>
     <string name="levels_card_lost">Perdiste</string>

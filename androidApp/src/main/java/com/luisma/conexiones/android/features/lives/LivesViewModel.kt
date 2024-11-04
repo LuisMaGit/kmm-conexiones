@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class LivesViewModel(
-    val userProfileService: IUserProfileService
+    val userProfileService: IUserProfileService,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(LivesState.initial())
@@ -33,7 +33,8 @@ class LivesViewModel(
         when (event) {
             LivesEvents.InitLevels -> initLives()
             LivesEvents.DisposeLevels -> disposeLives()
-            LivesEvents.GetLives -> getLives()
+            LivesEvents.OnAddWatched -> onAddWatched()
+            is LivesEvents.EnableLivesButton -> enableLivesButton(event.enable)
         }
     }
 
@@ -58,9 +59,19 @@ class LivesViewModel(
         }
     }
 
-    private fun getLives() {
+    private fun enableLivesButton(enable: Boolean) {
+        if (_state.value.enabledLivesButton == enable) return
+        _state.update {
+            it.copy(
+                enabledLivesButton = enable
+            )
+        }
+    }
+
+    private fun onAddWatched() {
         viewModelScope.launch {
-            userProfileService.updateLives(lives = 0)
+            val lives = userProfileService.getLives()
+            userProfileService.updateLives(lives + 1)
         }
     }
 

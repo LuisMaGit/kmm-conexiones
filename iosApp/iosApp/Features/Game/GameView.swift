@@ -10,7 +10,6 @@ import SwiftUI
 
 struct GameView: View {
     @StateObject var vm = GameViewModel()
-    @Environment(\.colorScheme) var colorScheme
 
     let gameId: Int
 
@@ -19,8 +18,7 @@ struct GameView: View {
     }
 
     var body: some View {
-        ZStack {
-            CThemeColors(colorScheme: colorScheme).screenBackground
+        Group {
             VStack(
                 spacing: 0
             ) {

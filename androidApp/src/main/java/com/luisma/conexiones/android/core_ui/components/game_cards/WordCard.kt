@@ -47,7 +47,7 @@ fun WordCard(
                 targetValue = 1f,
                 animationSpec = keyframes {
                     durationMillis = 100
-                    1.05f at 50 using FastOutSlowInEasing
+                    1.05f at 50 with FastOutSlowInEasing
                 }
             )
 

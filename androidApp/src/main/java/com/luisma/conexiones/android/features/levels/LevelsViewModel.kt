@@ -44,7 +44,7 @@ class LevelsViewModel(
     val state = _state.asStateFlow()
 
     init {
-        initVM(resetState = false)
+        initVM()
     }
 
     fun sendEvent(event: LevelsEvents) {
@@ -60,13 +60,11 @@ class LevelsViewModel(
         }
     }
 
-    private fun initVM(resetState: Boolean) {
-        if (resetState) {
-            _state.update {
-                LevelsState.initial().copy(
-                    refreshOnBackControlFlag = _state.value.refreshOnBackControlFlag
-                )
-            }
+    private fun initVM() {
+        _state.update {
+            LevelsState.initial().copy(
+                refreshOnBackControlFlag = _state.value.refreshOnBackControlFlag,
+            )
         }
         viewModelScope.launch {
             val responsePlayingDef = async { gamesLevelsService.getLevelsPlayingPage() }
@@ -96,14 +94,14 @@ class LevelsViewModel(
                     ),
                     playingRowIsShowing = true,
                     lives = responseLives,
-                    openTutorial = !appWasOpenedBefore
+                    openTutorial = !appWasOpenedBefore,
                 )
             }
         }
     }
 
     private fun refreshScreen() {
-        initVM(resetState = true)
+        initVM()
     }
 
     private fun dismissTutorial() {

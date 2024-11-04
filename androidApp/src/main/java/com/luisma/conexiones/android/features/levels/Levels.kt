@@ -18,12 +18,12 @@ fun Levels(
         sendEvent(LevelsEvents.RefreshFromFlag(flag = resetFlag))
     }
 
-
     LevelsWrapper(
         lives = if (state.screenState == BasicScreenState.Success) state.lives else null,
         onTapLogo = { sendEvent(LevelsEvents.RefreshScreen) },
         openTutorial = state.openTutorial,
-        onDismissTutorial = { sendEvent(LevelsEvents.DismissTutorial) }
+        onDismissTutorial = { sendEvent(LevelsEvents.DismissTutorial) },
+        onDismissLives = { sendEvent(LevelsEvents.RefreshScreen) }
     ) {
         if (state.screenState == BasicScreenState.Success) {
             LevelsGrid(

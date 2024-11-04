@@ -21,6 +21,7 @@ data class GameViewState(
     val notSolvedRowsOnLost: Map<Int, Int>,
     val showOnDoneSignAnimation: Boolean,
     val showOnDoneLivesAnimation: Boolean,
+    val enabledAddButton: Boolean
 ) {
     companion object {
         fun initial(): GameViewState {
@@ -36,7 +37,8 @@ data class GameViewState(
                 selectFailed = false,
                 notSolvedRowsOnLost = emptyMap(),
                 showOnDoneSignAnimation = false,
-                showOnDoneLivesAnimation = false
+                showOnDoneLivesAnimation = false,
+                enabledAddButton = false
             )
         }
     }

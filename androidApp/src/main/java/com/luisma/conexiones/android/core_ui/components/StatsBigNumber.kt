@@ -9,7 +9,6 @@ import androidx.compose.ui.graphics.Color
 import com.luisma.conexiones.android.core_ui.helpers.fontSizeNonScaledSp
 import com.luisma.conexiones.android.core_ui.theme.CTheme
 import com.luisma.conexiones.android.core_ui.theme.cFontSize16
-import com.luisma.conexiones.android.core_ui.theme.cFontSize16sp
 import com.luisma.conexiones.android.core_ui.theme.cFontSize32
 import com.luisma.conexiones.android.core_ui.theme.cSpace4
 
