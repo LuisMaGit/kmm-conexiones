@@ -72,7 +72,7 @@ fun GameGrid(
                     text = rowData.wordsRow[columnIdx],
                     selected = dist.selected,
                     onTap = onTapCard,
-                    disabled = !dist.selected && !canSelectCards,
+                    disabled = rowData.solved || (!dist.selected && !canSelectCards),
                     column = columnIdx,
                     row = rowIdx,
                     sizeType = cardType,
