@@ -41,7 +41,7 @@ class StatsService(
         )
 
         val distribution = mutableListOf<Int>()
-        for (tr in 0 ..< 4 ) {
+        for (tr in 0 ..< GAME_AMOUNT_TRIES ) {
             val amountTries = dbService.selectGuessedTriesCount(guessedTries = tr)
             distribution.add(amountTries)
         }

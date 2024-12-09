@@ -28,8 +28,8 @@ android {
         applicationId = "com.luisma.conexiones.android"
         minSdk = 24
         targetSdk = 34
-        versionCode = 2
-        versionName = "1.0.0"
+        versionCode = 3
+        versionName = "1.0.1"
     }
     buildFeatures {
         compose = true
