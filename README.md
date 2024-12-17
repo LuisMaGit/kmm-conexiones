@@ -22,3 +22,14 @@ Both UI structures and components, been both declaratives UI frameworks, are qui
 
 **📐 Shared logic:**
 All the app logic, data, contracts and unit tests are in the <code>shared</code> module written in [Kotlin](https://kotlinlang.org/), both UI modules consume it. 
+
+**📚 Tech stack**
+Jetpack Compose
+Swift UI
+Kotlin Multiplatform
+SqlDelight
+Kotlin DateTime
+Kotlin Serialization
+
+
+
