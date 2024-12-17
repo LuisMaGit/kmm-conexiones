@@ -14,6 +14,16 @@ Fully off-line.</h3>
 </a>
 </div>
 
+<h3 align="center">📸 Screenshots (on iPhone 15 and Samsung Galaxy S23):</h3> 
+<p align="center">
+<img width="100" height="200" src="https://github.com/user-attachments/assets/2227877c-d1d8-4a0c-bf5b-ba8c8c60a8c0"/>
+<img width="100" height="200" src="https://github.com/user-attachments/assets/15a63098-9066-4137-bf0e-cd3cfec339c6"/>
+<img width="100" height="200" src="https://github.com/user-attachments/assets/c8b470b2-bb12-4119-a3ef-2ac3984efe71"/>
+<img width="100" height="200" src="https://github.com/user-attachments/assets/9a3f7e41-0ec8-4f08-8e1a-90502445f2ba"/>
+<img width="100" height="200" src="https://github.com/user-attachments/assets/1a0f9923-0a9b-466f-9ea8-a650bbdcd1111"/>
+<img width="100" height="200" src="https://github.com/user-attachments/assets/af963d76-9b31-44a5-9b9a-732da076ab8f"/>
+</p>
+
 
 ### How is the app made?
 
@@ -43,15 +53,6 @@ All the app logic, data, contracts and unit tests are in the <code>shared</code>
 - Kotlin DateTime
 - Kotlin Serialization
 
-<h3 align="center">📸 Screenshots (on iPhone 15 and Samsung Galaxy S23):</h3> 
-<p align="center">
-<img width="100" height="200" src="https://github.com/user-attachments/assets/2227877c-d1d8-4a0c-bf5b-ba8c8c60a8c0"/>
-<img width="100" height="200" src="https://github.com/user-attachments/assets/15a63098-9066-4137-bf0e-cd3cfec339c6"/>
-<img width="100" height="200" src="https://github.com/user-attachments/assets/c8b470b2-bb12-4119-a3ef-2ac3984efe71"/>
-<img width="100" height="200" src="https://github.com/user-attachments/assets/9a3f7e41-0ec8-4f08-8e1a-90502445f2ba"/>
-<img width="100" height="200" src="https://github.com/user-attachments/assets/1a0f9923-0a9b-466f-9ea8-a650bbdcd1111"/>
-<img width="100" height="200" src="https://github.com/user-attachments/assets/af963d76-9b31-44a5-9b9a-732da076ab8f"/>
-</p>
 
 
 
