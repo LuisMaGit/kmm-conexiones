@@ -5,7 +5,7 @@
   <h2 align="center">Conexiones</h2>
 </p>
 
-<h3 align="center">A words puzzle game done in <a href="https://kotlinlang.org/docs/multiplatform.html">KMM</a>, with fully native UI in Android and iOS, with shared Kotlin logic.
+<h3 align="center">A spanish words puzzle game done in <a href="https://kotlinlang.org/docs/multiplatform.html">KMM</a>, with fully native UI in Android and iOS, with shared Kotlin logic.
 Fully off-line.</h3>
 
 [<image width="200" height="60" src="https://github.com/user-attachments/assets/1d768415-4f54-47b8-844f-51f2042c422c"></image>](https://play.google.com/store/apps/details?id=com.luisma.conexiones.android)
