@@ -13,7 +13,7 @@ keystoreProperties.load(FileInputStream(keystorePropertiesFile))
 
 android {
     namespace = "com.luisma.conexiones.android"
-    compileSdk = 34
+    compileSdk = 35
 
     signingConfigs {
         create("release") {
@@ -27,9 +27,9 @@ android {
     defaultConfig {
         applicationId = "com.luisma.conexiones.android"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 4
-        versionName = "1.0.2"
+        targetSdk = 35
+        versionCode = 5
+        versionName = "1.0.3"
     }
     buildFeatures {
         compose = true

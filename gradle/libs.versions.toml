@@ -15,6 +15,7 @@ add-mob = "23.3.0"
 google-services = "4.4.2"
 firebase-bom = "33.5.1"
 
+
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }

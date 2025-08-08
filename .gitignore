@@ -8,6 +8,7 @@ captures
 .cxx
 local.properties
 xcuserdata
+androidApp/build
 androidApp/google-services.json
 androidApp/src/main/res/values/secrets.xml
 androidApp/upload-keystore.jks
