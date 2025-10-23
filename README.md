@@ -25,7 +25,7 @@ Fully off-line.</h3>
 </p>
 
 
-### How is the app made?
+### How was the app made?
 
 **🤖 Android app:**
 
